@@ -1,1 +1,3 @@
 https://www.codecademy.com/resources/blog/10-javascript-code-challenges-for-beginners/
+
+https://jscodechallenges.vercel.app/challenges/primitives
