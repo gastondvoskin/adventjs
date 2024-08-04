@@ -1,5 +1,24 @@
+const printNumbers = (min, max) => {
+  if (typeof min !== "number" || typeof max !== "number") {
+    console.error("min and max should be numbers"); 
+    return; 
+  };
 
+  min = Math.ceil(min); 
+  if (min % 2 !== 0) {
+    min++;
+  }; 
+  
+  for (let i = min; i <= max; i = i + 2) {
+    console.log(i); 
+  }; 
+};
 
+// TESTING
+// printNumbers(0, 10); 
+// printNumbers(-2, 4); 
+// printNumbers(2.1, 9); 
+// printNumbers("text", 9); 
 
 
 
