@@ -7,11 +7,12 @@
 export default function listGifts(letter) {
   let processedGifts = {}; 
   const allGifts = letter.split(" "); 
+  console.log(allGifts)
 
   for (let i = 0; i < allGifts.length; i++) {
     const currentGift = allGifts[i];
 
-    if (currentGift[0] !== "_") {
+    if (currentGift[0] !== "_" && currentGift !== "") {
       if (processedGifts[currentGift]) {
         processedGifts[currentGift]++;
       } else {
@@ -25,7 +26,7 @@ export default function listGifts(letter) {
 
 
 // TESTING
-const letter = 'bici coche balón _playstation bici coche peluche'; 
+const letter = 'bici coche     balón _playstation bici coche peluche'; 
 const gifts = listGifts(letter); 
 console.log(gifts); 
 const expectedOutput = {
