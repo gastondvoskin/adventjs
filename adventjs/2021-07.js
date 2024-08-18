@@ -15,7 +15,6 @@ export default function contains(store, product) {
 
       // Recursive case
       if (typeof element === "object") {
-        console.log(element, "here");
         if (contains(element, product)) {
           return true;
         }
