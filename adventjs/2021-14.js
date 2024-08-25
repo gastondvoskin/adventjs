@@ -4,19 +4,35 @@
 // }
 
 
+// solution 1 
 export default function missingReindeer(ids) {
   for (let i = 0; i <= ids.length; i++) {
-    if (!ids.includes(i)) {
-      return i;
-    }
+    if (!ids.includes(i)) return i;
   }
 }
+
+// solution 2
+// export default function missingReindeer(ids) {
+//   ids.sort((a, b) => a - b); 
+//   if (ids.length === 1 && ids[0] === 1) return 0;
+//   for (let i = 0; i < ids.length; i++) {
+//     const id = ids[i];
+//     if (ids[i] + 1 !== ids[i + 1]) {
+//       return ids[i] + 1;
+//     }
+//     if (i === ids.length) {
+//       return i + 1;
+//     }
+//   }
+// }
+
 
 
 
 // TESTING
 console.log(missingReindeer([5, 6, 1, 2, 3, 7, 0])) // -> 4
 console.log(missingReindeer([0, 1])) // -> 2 (¡es el último el que falta!)
+console.log(missingReindeer([1])) // -> 1 (¡es el último el que falta!)
 
 // LOGIC
 /* 
