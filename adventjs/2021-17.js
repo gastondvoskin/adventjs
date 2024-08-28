@@ -9,46 +9,50 @@ export default function countPackages(carriers, carrierID) {
 
   let subordinatesForRecursion = []
   for (let i = 0; i < carriers.length; i++) {
-    // console.log(carriers[i])
     const [carrierName, packages, subord] = carriers[i]
-    // console.log(carrierName, packages, subord)
     if (carrierName === carrierID) {
-      // console.log(carrierName, carrierID)
       result += packages; 
       if (subord.length) {
-        // console.log(subord.length)
         subordinatesForRecursion = subord;
       }
     }
   }
-  // console.log(subordinatesForRecursion)
-  // console.log(subordinatesForRecursion.length)
-  // console.log(result)
-  //// return result
 
   if (subordinatesForRecursion.length) {
-    // console.log('here');
-    // console.log(result); 
-    return result + countPackages(carriers, subordinatesForRecursion[0]) + countPackages(carriers, subordinatesForRecursion[1]); 
+    subordinatesForRecursion.forEach(element => {
+      result += countPackages(carriers, element)
+    });
+    return result;
   } else {
-    // console.log('here');
     return result;
   }
 }
 
 
-// TESTING
-const carriers = [
-  ['dapelu', 5, ['midu', 'jelowing']],
-  ['midu', 2, []],
-  ['jelowing', 2, []]
-]
+// // TESTING
+// const carriers = [
+//   ['dapelu', 5, ['midu', 'jelowing']],
+//   ['midu', 2, []],
+//   ['jelowing', 2, []]
+// ]
 
-console.log(countPackages(carriers, 'dapelu')) // 9
+// console.log(countPackages(carriers, 'dapelu')) // 9
 // console.log(countPackages(carriers, 'midu')) 
 // console.log(countPackages(carriers, 'jelowing')) 
-// 5 de dapelu, 2 de midu y 2 de jelowing = 9
+// // 5 de dapelu, 2 de midu y 2 de jelowing = 9
 
+// const carriers2 = [
+//   ['lolivier', 8, ['camila', 'jesuspoleo']],
+//   ['camila', 5, ['sergiomartinez', 'conchaasensio']],
+//   ['jesuspoleo', 4, []],
+//   ['sergiomartinez', 4, []],
+//   ['conchaasensio', 3, ['facundocapua', 'faviola']],
+//   ['facundocapua', 2, []],
+//   ['faviola', 1, []]
+// ]
+
+// console.log(countPackages(carriers2, 'camila')) // 15
+// // 5 de camila, 4 de sergiomartinez, 3 de conchaasensio, 2 de facundocapua y 1 de faviola = 15
 
 
 
