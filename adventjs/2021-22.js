@@ -4,33 +4,28 @@
 //  }
 
 export default function countDecorations(bigTree) {
-  let result = bigTree.value;
-  if (bigTree.left !== null) {
-    result += countDecorations(bigTree.left);
-  }
-  if (bigTree.right !== null) {
-    result += countDecorations(bigTree.right);
-  }
+  if (!bigTree) return 0;
 
-  return result;
+  const { value, left, right } = bigTree;
+  return value + countDecorations(left) + countDecorations(right);
 }
 
 // TESTING
-const tree = {
-  value: 1, // el nodo raíz siempre es uno, porque es la estrella ⭐
-  left: {
-    value: 2, // el nodo izquierdo necesita dos decoraciones
-    left: null, // no tiene más ramas
-    right: null, // no tiene más ramas
-  },
-  right: {
-    value: 3, // el nodo de la derecha necesita tres decoraciones
-    left: null, // no tiene más ramas
-    right: null, // no tiene más ramas
-  },
-};
+// const tree = {
+//   value: 1, // el nodo raíz siempre es uno, porque es la estrella ⭐
+//   left: {
+//     value: 2, // el nodo izquierdo necesita dos decoraciones
+//     left: null, // no tiene más ramas
+//     right: null, // no tiene más ramas
+//   },
+//   right: {
+//     value: 3, // el nodo de la derecha necesita tres decoraciones
+//     left: null, // no tiene más ramas
+//     right: null, // no tiene más ramas
+//   },
+// };
 
-console.log(countDecorations(tree)); // 6
+// console.log(countDecorations(tree)); // 6
 
 // EXERCISE
 // ¡Ay! Que llega la Navidad y no hemos decorado todavía el árbol. 🎄😱
