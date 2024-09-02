@@ -3,48 +3,37 @@
 //    return false
 //  }
 
+
 export default function canReconfigure(from, to) {
   if (from.length !== to.length) {
     return false;
   }
 
-  let changes = {
-    // c: "j",
-    // o: "u",
-    // n: "u",
-    
-    // x: "x",
-    // b: "x",
-    
-    // o: "b",
-    // x: "o",
-  }
+  let changes = {};
 
   for (let i = 0; i < from.length; i++) {
     const fromChar = from[i];
     const toChar = to[i];
-    // console.log(i)
-    console.log(fromChar); 
-    console.log(toChar); 
-    // console.log(changes[fromChar])
-    console.log(changes); 
 
-    console.log(Object.entries(changes))
-    console.log(Object.entries(changes).map((el) => el[1]))
-    console.log(!Object.entries(changes).map((el) => el[1]).includes(toChar))
-    if (!changes[fromChar] && !Object.entries(changes).map((el) => el[1]).includes(toChar)) {
+    const fromCharExistsInChanges = changes[fromChar];
+
+    const flattedChanges = Object.entries(changes);
+    const valuesFromChanges = flattedChanges.map((pair) => pair[1]);
+    const toCharIsIncludedInChanges = valuesFromChanges.includes(toChar);
+
+    if (!fromCharExistsInChanges && !toCharIsIncludedInChanges) {
       changes[fromChar] = toChar;
     } else if (changes[fromChar] !== toChar) {
       return false;
     }
   }
-  return true; 
+  return true;
 }
 
 // TESTING
 // console.log(canReconfigure("ab", "cd"));
-console.log(canReconfigure("con", "juu"));
-// console.log(canReconfigure("aa", "rr"));
+// console.log(canReconfigure("con", "juu"));
+
 
 
 // LOGIC
@@ -52,7 +41,11 @@ console.log(canReconfigure("con", "juu"));
 // iterate from (it is the same to iterate to since they have the same length)
 // compare from[i] with to[i]
 // no se puede asignar al mismo carácter a dos letras distintas (pero sí a si mismo)
-
+// let changes = {
+//   // c: "j",
+//   // o: "u",
+//   // n: "u",
+// }
 
 // EXERCISE
 // Estamos en la fábrica de Santa Claus 🎅 creando regalos como si no hubiera un mañana.
