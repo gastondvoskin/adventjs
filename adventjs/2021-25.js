@@ -36,7 +36,7 @@ export default function canMouseEat(direction, game) {
 
   // find the nearest asterisk
   let minDistance; 
-  let nearestAsteriskPosition = {};
+  let nearestAsterisksPositions = [];
 
   for (let i = 0; i < asterisksPositions.length; i++) {
     const asteriskPosition = asterisksPositions[i]; 
@@ -57,87 +57,149 @@ export default function canMouseEat(direction, game) {
 
 
     console.log(asteriskPosition)
-    console.log(nearestAsteriskPosition)
+    console.log(nearestAsterisksPositions)
     if (i === 0) {
-      nearestAsteriskPosition = asteriskPosition; 
+      nearestAsterisksPositions.push(asteriskPosition); 
+      console.log(nearestAsterisksPositions); 
       minDistance = currDistance; 
     } 
     else if (currDistance < minDistance) {  /* assuming that there is only one asterisk. if there is more than one, nearestAsteriskPosition should be an array */
-      nearestAsteriskPosition = asteriskPosition; 
-      
+      nearestAsterisksPositions = [asteriskPosition]; 
       minDistance = currDistance; 
+    } 
+    else if (currDistance === minDistance) {
+      nearestAsterisksPositions.push(asteriskPosition); 
     }
     console.log(minDistance); 
-    console.log(nearestAsteriskPosition); 
+    console.log(nearestAsterisksPositions); 
   }
 
 
   // return according to the direction
+  let validDirections = []; 
+
   if (direction === "up") {
-    if (nearestAsteriskPosition.row < mousePosition.row) {
-      return true;
+    for (let i = 0; i < nearestAsterisksPositions.length; i++) {
+      const currAsteriskPosition = nearestAsterisksPositions[i];
+      if (currAsteriskPosition.row < mousePosition.row) {
+        return true;
+      }
     }
-    else {
-      return false; 
-    }
+    return false;
   }
 
   if (direction === "down") {
-    console.log(nearestAsteriskPosition, mousePosition)
-
-    if (nearestAsteriskPosition.row > mousePosition.row) {
-      return true;
+    for (let i = 0; i < nearestAsterisksPositions.length; i++) {
+      const currAsteriskPosition = nearestAsterisksPositions[i];
+      if (currAsteriskPosition.row > mousePosition.row) {
+        return true;
+      }
     }
-    else {
-      return false; 
-    }
+    return false;
   }
 
+
   if (direction === "left") {
-    if (nearestAsteriskPosition.col < mousePosition.col) {
-      return true;
+    for (let i = 0; i < nearestAsterisksPositions.length; i++) {
+      const currAsteriskPosition = nearestAsterisksPositions[i];
+      if (currAsteriskPosition.col < mousePosition.col) {
+        return true;
+      }
     }
-    else {
-      return false; 
-    }
+    return false;
   }
 
   if (direction === "right") {
-    if (nearestAsteriskPosition.col > mousePosition.col) {
-      return true;
+    for (let i = 0; i < nearestAsterisksPositions.length; i++) {
+      const currAsteriskPosition = nearestAsterisksPositions[i];
+      if (currAsteriskPosition.col > mousePosition.col) {
+        return true;
+      }
     }
-    else {
-      return false; 
-    }
+    return false;
   }
+
+
+
+
+
+  // if (direction === "up") {
+  //   if (nearestAsteriskPosition.row < mousePosition.row) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false; 
+  //   }
+  // }
+
+  // if (direction === "down") {
+  //   console.log(nearestAsteriskPosition, mousePosition)
+
+  //   if (nearestAsteriskPosition.row > mousePosition.row) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false; 
+  //   }
+  // }
+
+  // if (direction === "left") {
+  //   if (nearestAsteriskPosition.col < mousePosition.col) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false; 
+  //   }
+  // }
+
+  // if (direction === "right") {
+  //   if (nearestAsteriskPosition.col > mousePosition.col) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false; 
+  //   }
+  // }
 }
 
 
 
 
 // TESTING
-const room = [
-  [' ', ' ', ' '],
-  [' ', ' ', 'm'],
+const roomTest = [
+  [' ', '*', ' '],
+  [' ', '*', 'm'],
   [' ', ' ', '*']
 ]
 
-console.log(canMouseEat('up',    room))   // false
-console.log(canMouseEat('down',  room))   // true
-console.log(canMouseEat('right', room))   // false
-console.log(canMouseEat('left',  room))   // false
+console.log(canMouseEat('up',    roomTest))   
+console.log(canMouseEat('down',  roomTest))   
+console.log(canMouseEat('right', roomTest))   
+console.log(canMouseEat('left',  roomTest))   
 
-const room2 = [
-  ["*", " ", " ", " "],
-  [" ", "m", "*", " "],
-  [" ", " ", " ", " "],
-  [" ", " ", " ", "*"],
-];
 
-console.log(canMouseEat("up", room2)) // false
-console.log(canMouseEat('down',  room2))   // false
-console.log(canMouseEat('right', room2))   // true
-console.log(canMouseEat('left',  room2))   // false
+// const room = [
+//   [' ', ' ', ' '],
+//   [' ', ' ', 'm'],
+//   [' ', ' ', '*']
+// ]
+
+// console.log(canMouseEat('up',    room))   // false
+// console.log(canMouseEat('down',  room))   // true
+// console.log(canMouseEat('right', room))   // false
+// console.log(canMouseEat('left',  room))   // false
+
+// const room2 = [
+//   ["*", " ", " ", " "],
+//   [" ", "m", "*", " "],
+//   [" ", " ", " ", " "],
+//   [" ", " ", " ", "*"],
+// ];
+
+// console.log(canMouseEat("up", room2)) // false
+// console.log(canMouseEat('down',  room2))   // false
+// console.log(canMouseEat('right', room2))   // true
+// console.log(canMouseEat('left',  room2))   // false
 
 // DOUBTS
 // Is the food alway at one movement?
