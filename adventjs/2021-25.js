@@ -5,12 +5,9 @@
 //   return false
 // }
 
-
-
-export default function canMouseEat(direction, game) {
+const findMouseAndAsterisks = (game) => {
   let mousePosition = {};
   let asterisksPositions = [];
-
 
   // search mouse and asterisks
   for (let rowIndex = 0; rowIndex < game.length; rowIndex++) {
@@ -29,10 +26,13 @@ export default function canMouseEat(direction, game) {
       }
     }
   }
+  return [mousePosition, asterisksPositions]; 
+}
 
-  console.log(mousePosition);
-  console.log(asterisksPositions);
-  
+
+export default function canMouseEat(direction, game) {
+  const [mousePosition, asterisksPositions] = findMouseAndAsterisks(game); 
+
 
   // find the nearest asterisk
   let minDistance; 
@@ -44,23 +44,16 @@ export default function canMouseEat(direction, game) {
     if (rowDistance < 0) {
       rowDistance = rowDistance * -1;
     }
-    console.log(rowDistance) 
 
     let colDistance = asteriskPosition.col - mousePosition.col;
     if (colDistance < 0) {
       colDistance = colDistance * -1;
     }
-    console.log(colDistance)
 
     const currDistance = rowDistance + colDistance; 
-    console.log(currDistance); 
 
-
-    console.log(asteriskPosition)
-    console.log(nearestAsterisksPositions)
     if (i === 0) {
       nearestAsterisksPositions.push(asteriskPosition); 
-      console.log(nearestAsterisksPositions); 
       minDistance = currDistance; 
     } 
     else if (currDistance < minDistance) {  /* assuming that there is only one asterisk. if there is more than one, nearestAsteriskPosition should be an array */
@@ -70,14 +63,10 @@ export default function canMouseEat(direction, game) {
     else if (currDistance === minDistance) {
       nearestAsterisksPositions.push(asteriskPosition); 
     }
-    console.log(minDistance); 
-    console.log(nearestAsterisksPositions); 
   }
 
 
   // return according to the direction
-  let validDirections = []; 
-
   if (direction === "up") {
     for (let i = 0; i < nearestAsterisksPositions.length; i++) {
       const currAsteriskPosition = nearestAsterisksPositions[i];
@@ -119,63 +108,22 @@ export default function canMouseEat(direction, game) {
     return false;
   }
 
-
-
-
-
-  // if (direction === "up") {
-  //   if (nearestAsteriskPosition.row < mousePosition.row) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false; 
-  //   }
-  // }
-
-  // if (direction === "down") {
-  //   console.log(nearestAsteriskPosition, mousePosition)
-
-  //   if (nearestAsteriskPosition.row > mousePosition.row) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false; 
-  //   }
-  // }
-
-  // if (direction === "left") {
-  //   if (nearestAsteriskPosition.col < mousePosition.col) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false; 
-  //   }
-  // }
-
-  // if (direction === "right") {
-  //   if (nearestAsteriskPosition.col > mousePosition.col) {
-  //     return true;
-  //   }
-  //   else {
-  //     return false; 
-  //   }
-  // }
 }
 
 
 
 
 // TESTING
-const roomTest = [
-  [' ', '*', ' '],
-  [' ', '*', 'm'],
-  [' ', ' ', '*']
-]
+// const roomTest = [
+//   [' ', '*', ' '],
+//   [' ', '*', 'm'],
+//   [' ', ' ', '*']
+// ]
 
-console.log(canMouseEat('up',    roomTest))   
-console.log(canMouseEat('down',  roomTest))   
-console.log(canMouseEat('right', roomTest))   
-console.log(canMouseEat('left',  roomTest))   
+// console.log(canMouseEat('up',    roomTest))   
+// console.log(canMouseEat('down',  roomTest))   
+// console.log(canMouseEat('right', roomTest))   
+// console.log(canMouseEat('left',  roomTest))   
 
 
 // const room = [
