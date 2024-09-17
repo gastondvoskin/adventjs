@@ -3,20 +3,17 @@
 // }
 
 function fitsInOneBox(boxes) {
-  if (!boxes) throw new Error ("Provide valid arguments"); 
-  if (!boxes.length || boxes.length === 1) return true; 
-
+  if (!Array.isArray(boxes)) throw new Error ("The argument must be an array"); 
+  
   boxes.sort((a, b) => b.l - a.l);
-  console.log(boxes);
 
   for (let i = 0; i < boxes.length - 1; i++) {
     const boxOne = boxes[i];
     const boxTwo = boxes[i + 1];
-
-    console.log(i, boxOne.l, boxTwo.l)
     
     if (boxOne.l === boxTwo.l || boxOne.w <= boxTwo.w || boxOne.h <= boxTwo.h) return false;
   }
+  
   return true; 
 }
 
