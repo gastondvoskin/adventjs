@@ -3,17 +3,49 @@
 // }
 
 function getMaxGifts(giftsCities, maxGifts, maxCities) {
-  return 0
+  let maxValue = 0; 
+
+  let iteration = 1; 
+  while (iteration <= maxCities) {
+    
+  }
+  for (let i = 0; i < giftsCities.length; i++) {
+    const gifts_A = giftsCities[i];
+    giftsCities.shift(); 
+    maxValue = gifts_A + getMaxGifts(giftsCities, maxGifts, maxCities)
+  }
+
+  return maxValue; 
 }
 
+// for (let i = 0; i < giftsCities.length; i++) {
+//   const city_A = giftsCities[i];
+//   for (let j = 0; j < giftsCities.length; j++) {
+//     const city_B = giftsCities[j];
+//     for (let k = 0; k < array.length; k++) {
+//       const element = array[k];
+      
+//     }
+//   }
+// }
+// LOGIC
+/* 
+maxValue = 0; 
 
-console.log(getMaxGifts([12, 3, 11, 5, 7], 20, 3)) // 20
-console.log(getMaxGifts([50], 15, 1)) // 0
-console.log(getMaxGifts([50], 100, 1)) // 50
-console.log(getMaxGifts([50, 70], 100, 1)) // 70
-console.log(getMaxGifts([50, 70, 30], 100, 2)) // 100
-console.log(getMaxGifts([50, 70, 30], 100, 3)) // 100
-console.log(getMaxGifts([50, 70, 30], 100, 4)) // 100
+
+Compare all the possible combinatios (iterate three times). 
+*/
+
+// TESTING
+console.log(getMaxGifts([1], 1, 1)) // 1
+
+// console.log(getMaxGifts([12, 3, 11, 5, 7], 20, 3)) // 20
+// console.log(getMaxGifts([50], 15, 1)) // 0
+// console.log(getMaxGifts([50], 100, 1)) // 50
+// console.log(getMaxGifts([50, 70], 100, 1)) // 70
+// console.log(getMaxGifts([50, 70, 30], 100, 2)) // 100
+// console.log(getMaxGifts([50, 70, 30], 100, 3)) // 100
+// console.log(getMaxGifts([50, 70, 30], 100, 4)) // 100
 
 // EXERCISE
 // To not tire the reindeer, Papa Noel wants to leave the maximum number of gifts by making the least number of trips possible.
