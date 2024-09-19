@@ -2,6 +2,7 @@
 //   return 0
 // }
 
+/* WIP. Just experimenting ideas */
 function getMaxGifts(giftsCities, maxGifts, maxCities) {
   let maxValue = 0; 
 
