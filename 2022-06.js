@@ -12,23 +12,19 @@ function createCube(size) {
   const newline = "\n";  
 
   let output = ""; 
-
-  // output += space.repeat(0) + (slash + revSlash) + (underscore + revSlash) + newline; 
-  console.log(output)
   
   let i = 0;
   while (i < size) {
-    output = output + space.repeat(size-i-1) + (slash + revSlash).repeat(i+1) + (underscore + revSlash).repeat(size) + newline; 
+    output += space.repeat(size-i-1) + (slash + revSlash).repeat(i+1) + (underscore + revSlash).repeat(size) + newline; 
     i++; 
   }
-  // console.log(output)
 
   i = 0;
   while (i < size) {
-    output = output + space.repeat(i) + (revSlash + slash).repeat(size-i) + (underscore + slash).repeat(size) + newline; 
+    output += space.repeat(i) + (revSlash + slash).repeat(size-i) + (underscore + slash).repeat(size) + newline; 
     i++; 
   }
-  // console.log(output)
+
   return output; 
 }
 
