@@ -11,31 +11,45 @@ function createCube(size) {
   const underscore = "_"; 
   const newline = "\n";  
 
-  let output = ""; 
+  let lines = []; 
   
   let i = 0;
   while (i < size) {
-    output += space.repeat(size-i-1) + (slash + revSlash).repeat(i+1) + (underscore + revSlash).repeat(size) + newline; 
+    const currentLine = 
+      space.repeat(size-i-1) + 
+      (slash + revSlash).repeat(i + 1) + 
+      (underscore + revSlash).repeat(size) + 
+      newline 
+
+    lines.push(currentLine); 
     i++; 
   }
 
   i = 0;
   while (i < size) {
-    output += space.repeat(i) + (revSlash + slash).repeat(size-i) + (underscore + slash).repeat(size) + newline; 
+    // lines += space.repeat(i) + (revSlash + slash).repeat(size-i) + (underscore + slash).repeat(size) + newline; 
+    const currentLine = 
+      space.repeat(i) + 
+      (revSlash + slash).repeat(size-i) + 
+      (underscore + slash).repeat(size) + 
+      newline 
+
+    lines.push(currentLine); 
     i++; 
   }
 
-  return output; 
+  const cube = lines.join(""); 
+  return cube; 
 }
 
 
 // TESTING
 // console.log(createCube('a')); // throw
-console.log(createCube(1)); 
+// console.log(createCube(1)); 
 // /\_\
 // \/_/
 
-console.log(createCube(2)); 
+// console.log(createCube(2)); 
 // // output:
 //  /\_\_\
 // /\/\_\_\
