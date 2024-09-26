@@ -2,8 +2,7 @@
 //   return false
 // }
 
-const isPalindrome = (part) => {
-  const partArr = part.split("");
+const isPalindrome = (partArr) => {
   for (let i = 0; i < partArr.length / 2; i++) {
     const char_A = partArr[i];
     const char_B = partArr[partArr.length - 1 - i];
@@ -22,18 +21,17 @@ function checkPart(part) {
   for (let i = 0; i < partArr.length; i++) {
     let currentArr = [...partArr]; 
     currentArr.splice(i, 1); 
-    const currentPart = currentArr.join(""); 
-    if (isPalindrome(currentPart)) return true;
+    if (isPalindrome(currentArr)) return true;
   }
   return false;
 }
 
 // TESTING checkPart
-console.log(checkPart("a"))
-console.log(checkPart("ab"))
-console.log(checkPart("abc"))
-console.log(checkPart("abcb"))
-console.log(checkPart("abca"))
+console.log(checkPart("a")) // true
+console.log(checkPart("ab")) // true
+console.log(checkPart("abc")) // false
+console.log(checkPart("abcb")) // true
+console.log(checkPart("abca")) // true
 console.log(checkPart("uwu")) // true
 console.log(checkPart("miidim")) // true
 console.log(checkPart("midu")) // false
