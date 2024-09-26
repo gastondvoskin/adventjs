@@ -12,8 +12,8 @@ const isPalindrome = (partArr) => {
 }
 
 // TESTING isPalindrome
-console.log(isPalindrome("abc")); 
-console.log(isPalindrome("aba")); 
+// console.log(isPalindrome("abc")); 
+// console.log(isPalindrome("aba")); 
 
 
 function checkPart(part) {
@@ -27,14 +27,14 @@ function checkPart(part) {
 }
 
 // TESTING checkPart
-console.log(checkPart("a")) // true
-console.log(checkPart("ab")) // true
-console.log(checkPart("abc")) // false
-console.log(checkPart("abcb")) // true
-console.log(checkPart("abca")) // true
-console.log(checkPart("uwu")) // true
-console.log(checkPart("miidim")) // true
-console.log(checkPart("midu")) // false
+// console.log(checkPart("a")) // true
+// console.log(checkPart("ab")) // true
+// console.log(checkPart("abc")) // false
+// console.log(checkPart("abcb")) // true
+// console.log(checkPart("abca")) // true
+// console.log(checkPart("uwu")) // true
+// console.log(checkPart("miidim")) // true
+// console.log(checkPart("midu")) // false
 
 
 // LOGIC
