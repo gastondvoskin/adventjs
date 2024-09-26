@@ -18,12 +18,29 @@ console.log(isPalindrome("aba"));
 
 
 function checkPart(part) {
-  return false
+  const partArr = part.split("");
+  for (let i = 0; i < partArr.length; i++) {
+    let currentArr = [...partArr]; 
+    console.log(i)
+    currentArr.splice(i, 1); 
+    console.log(i, currentArr); 
+    const currentPart = currentArr.join(""); 
+    console.log(currentPart); 
+    if (isPalindrome(currentPart)) return true;
+  }
+  return false;
 }
 
+// TESTING checkPart
+console.log(checkPart("a"))
+console.log(checkPart("ab"))
+console.log(checkPart("abc"))
+console.log(checkPart("abcb"))
+console.log(checkPart("abca"))
+console.log(checkPart("uwu")) // true
+console.log(checkPart("miidim")) // true
+console.log(checkPart("midu")) // false
 
-// TESTING
-checkPart("a") // true
 
 // LOGIC
 /* 
