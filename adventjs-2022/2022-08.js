@@ -21,11 +21,8 @@ function checkPart(part) {
   const partArr = part.split("");
   for (let i = 0; i < partArr.length; i++) {
     let currentArr = [...partArr]; 
-    console.log(i)
     currentArr.splice(i, 1); 
-    console.log(i, currentArr); 
     const currentPart = currentArr.join(""); 
-    console.log(currentPart); 
     if (isPalindrome(currentPart)) return true;
   }
   return false;
