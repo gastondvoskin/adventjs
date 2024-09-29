@@ -10,16 +10,16 @@ const convertLeds = (leds) => {
       convertedLeds[i] = 1; 
     }
   }
-  console.log(convertedLeds)
   if (leds[leds.length - 1] === 1) {
     convertedLeds[0] = 1; 
   }
-  console.log(convertedLeds)
   return convertedLeds; 
 }
-console.log(convertLeds([0, 0, 1, 0])); 
-console.log(convertLeds([0, 0, 1, 1])); 
-console.log(convertLeds([1, 0, 1, 1])); 
+// TESTING CONVERTLEDS
+// console.log(convertLeds([0, 0, 1, 0])); 
+// console.log(convertLeds([0, 0, 1, 1])); 
+// console.log(convertLeds([1, 0, 1, 1])); 
+
 
 
 function countTime(leds) {
@@ -32,19 +32,17 @@ function countTime(leds) {
   return time; 
 }
 
-console.log(countTime([0, 0, 1, 0])); 
+// TESTING COUNTTIME
+// console.log(countTime([1])); // 0
+// console.log(countTime([1, 0])); // 7
+// console.log(countTime([0, 1])); // 7
+// console.log(countTime([0, 0, 1])); // 14 
+// console.log(countTime([0, 1, 0])); // 14
+// console.log(countTime([0, 1, 0, 0, 0, 0])); // 35 
 
-// TESTING 
-console.log(countTime([1])); // 0
-console.log(countTime([1, 0])); // 7
-console.log(countTime([0, 1])); // 7
-console.log(countTime([0, 0, 1])); // 14 
-console.log(countTime([0, 1, 0])); // 14
-console.log(countTime([0, 1, 0, 0, 0, 0])); // 35 
-
-console.log(countTime([0, 1, 1, 0, 1])) // 7
-console.log(countTime([0, 0, 0, 1])) // 21
-console.log(countTime([0, 0, 1, 0, 0])) // 28
+// console.log(countTime([0, 1, 1, 0, 1])) // 7
+// console.log(countTime([0, 0, 0, 1])) // 21
+// console.log(countTime([0, 0, 1, 0, 0])) // 28
 
 
 // LOGIC
