@@ -23,9 +23,28 @@ console.log(convertLeds([1, 0, 1, 1]));
 
 
 function countTime(leds) {
-  
+  let i = 0; 
+  while (leds.includes(0)) {
+    i++;
+    leds = convertLeds(leds); 
+  }
+  const time = i * 7;
+  return time; 
 }
 
+console.log(countTime([0, 0, 1, 0])); 
+
+// TESTING 
+console.log(countTime([1])); // 0
+console.log(countTime([1, 0])); // 7
+console.log(countTime([0, 1])); // 7
+console.log(countTime([0, 0, 1])); // 14 
+console.log(countTime([0, 1, 0])); // 14
+console.log(countTime([0, 1, 0, 0, 0, 0])); // 35 
+
+console.log(countTime([0, 1, 1, 0, 1])) // 7
+console.log(countTime([0, 0, 0, 1])) // 21
+console.log(countTime([0, 0, 1, 0, 0])) // 28
 
 
 // LOGIC
