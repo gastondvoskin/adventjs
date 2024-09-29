@@ -2,11 +2,37 @@
 //   return 0
 // }
 
+const convertLeds = (leds) => {
+  let convertedLeds = [...leds]; 
+  for (let i = leds.length - 1; i > 0; i--) {
+    const leftLed = leds[i - 1];
+    if (leftLed === 1) {
+      convertedLeds[i] = 1; 
+    }
+  }
+  console.log(convertedLeds)
+  if (leds[leds.length - 1] === 1) {
+    convertedLeds[0] = 1; 
+  }
+  console.log(convertedLeds)
+  return convertedLeds; 
+}
+console.log(convertLeds([0, 0, 1, 0])); 
+console.log(convertLeds([0, 0, 1, 1])); 
+console.log(convertLeds([1, 0, 1, 1])); 
+
+
 function countTime(leds) {
-  return 0
+  
 }
 
 
+
+// LOGIC
+/* 
+A performant way would be to count the consecutive 0, including the initial 0 and the last 0 in the array when present. 
+The simplest or most intuitive way would be to convert the array while the array includes a 0. 
+*/
 
 
 
