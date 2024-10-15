@@ -2,10 +2,30 @@
 //   return '1/1'
 // }
 
+const hhmmssStringToSeconds = (hhmmss) => {
+  const [hh, mm, ss] = hhmmss.split(":"); 
+  console.log(hh,mm,ss); 
+  const seconds = ss*1 + mm*60 + hh*60*60;
+  console.log(seconds); 
+  return seconds; 
+}
+// TESTING hhmmssStringToSeconds
+hhmmssStringToSeconds("00:00:00");
+hhmmssStringToSeconds("00:00:01");
+hhmmssStringToSeconds("00:01:00");
+hhmmssStringToSeconds("00:01:60");
+hhmmssStringToSeconds("01:00:00");
+
 function getCompleted(part, total) {
-  return '1/1'
+  
 }
 
+
+/* LOGIC
+Calculate the seconds of part
+Calculate the seconds of total
+Reduce part / total
+*/
 
 // Santa Claus is a bit worried because the preparations are taking a long time. He has got a Scrum certification and has decided to use the Scrum methodology to organize the work of his elves.
 
