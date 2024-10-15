@@ -4,22 +4,57 @@
 
 const hhmmssStringToSeconds = (hhmmss) => {
   const [hh, mm, ss] = hhmmss.split(":"); 
-  console.log(hh,mm,ss); 
   const seconds = ss*1 + mm*60 + hh*60*60;
-  console.log(seconds); 
   return seconds; 
 }
 // TESTING hhmmssStringToSeconds
-hhmmssStringToSeconds("00:00:00");
-hhmmssStringToSeconds("00:00:01");
-hhmmssStringToSeconds("00:01:00");
-hhmmssStringToSeconds("00:01:60");
-hhmmssStringToSeconds("01:00:00");
+// console.log(hhmmssStringToSeconds("00:00:00"));
+// console.log(hhmmssStringToSeconds("00:00:01"));
+// console.log(hhmmssStringToSeconds("00:01:00"));
+// console.log(hhmmssStringToSeconds("00:01:60"));
+// console.log(hhmmssStringToSeconds("01:00:00"));
+
+const reduceFraction = (numerator, denominator) => {
+
+  for (let i = 2; i <= denominator; i++) {
+    if (numerator % i === 0 && denominator % i === 0 ) {
+      numerator /= i;
+      denominator /= i;
+      i--; 
+      // console.log(numerator, denominator); 
+    }
+  }
+  return [numerator, denominator]; 
+}
+// TESTING reduceFraction
+// reduceFraction(1, 2); 
+// reduceFraction(2, 4); 
+// reduceFraction(4, 16);
+// reduceFraction(6, 14);
+
+
 
 function getCompleted(part, total) {
-  
+  const partSeconds = hhmmssStringToSeconds(part); 
+  const totalSeconds = hhmmssStringToSeconds(total); 
+  console.log(partSeconds, totalSeconds); 
+  const reducedFraction = reduceFraction(partSeconds, totalSeconds); 
+  console.log(reducedFraction); 
+  const [numerator, denominator] = reducedFraction;  
+  const finalString = `${numerator}/${denominator}`; 
+  console.log(finalString); 
+  return finalString;
 }
-
+// TESTING getCompleted
+// getCompleted('00:00:01', '00:00:02') // '1/3'
+// getCompleted('00:00:02', '00:00:04') // '1/3'
+// console.log(getCompleted('00:00:01', '00:00:01')) // '1/3'
+// console.log(getCompleted('01:00:00', '03:00:00')) // '1/3'
+// console.log(getCompleted('02:00:00', '04:00:00')) // '1/2'
+// console.log(getCompleted('01:00:00', '01:00:00')) // '1/1'
+// console.log(getCompleted('00:10:00', '01:00:00')) // '1/6'
+// console.log(getCompleted('01:10:10', '03:30:30')) // '1/3'
+// console.log(getCompleted('03:30:30', '05:50:50')) // '3/5
 
 /* LOGIC
 Calculate the seconds of part
