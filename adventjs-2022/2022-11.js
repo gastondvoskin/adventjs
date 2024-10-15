@@ -14,6 +14,7 @@ const hhmmssStringToSeconds = (hhmmss) => {
 // console.log(hhmmssStringToSeconds("00:01:60"));
 // console.log(hhmmssStringToSeconds("01:00:00"));
 
+
 const reduceFraction = (numerator, denominator) => {
 
   for (let i = 2; i <= denominator; i++) {
@@ -21,33 +22,30 @@ const reduceFraction = (numerator, denominator) => {
       numerator /= i;
       denominator /= i;
       i--; 
-      // console.log(numerator, denominator); 
     }
   }
   return [numerator, denominator]; 
 }
 // TESTING reduceFraction
-// reduceFraction(1, 2); 
-// reduceFraction(2, 4); 
-// reduceFraction(4, 16);
-// reduceFraction(6, 14);
-
+// console.log(reduceFraction(1, 2);) 
+// console.log(reduceFraction(2, 4);) 
+// console.log(reduceFraction(4, 16));
+// console.log(reduceFraction(6, 14));
 
 
 function getCompleted(part, total) {
   const partSeconds = hhmmssStringToSeconds(part); 
   const totalSeconds = hhmmssStringToSeconds(total); 
-  console.log(partSeconds, totalSeconds); 
+
   const reducedFraction = reduceFraction(partSeconds, totalSeconds); 
-  console.log(reducedFraction); 
+
   const [numerator, denominator] = reducedFraction;  
   const finalString = `${numerator}/${denominator}`; 
-  console.log(finalString); 
   return finalString;
 }
 // TESTING getCompleted
-// getCompleted('00:00:01', '00:00:02') // '1/3'
-// getCompleted('00:00:02', '00:00:04') // '1/3'
+// console.log(getCompleted('00:00:01', '00:00:02')) // '1/2'
+// console.log(getCompleted('00:00:02', '00:00:04')) // '1/2'
 // console.log(getCompleted('00:00:01', '00:00:01')) // '1/3'
 // console.log(getCompleted('01:00:00', '03:00:00')) // '1/3'
 // console.log(getCompleted('02:00:00', '04:00:00')) // '1/2'
@@ -62,6 +60,8 @@ Calculate the seconds of total
 Reduce part / total
 */
 
+
+// EXERCISE
 // Santa Claus is a bit worried because the preparations are taking a long time. He has got a Scrum certification and has decided to use the Scrum methodology to organize the work of his elves.
 
 // The elfs tell him the expected duration of the tasks with a string with the format hh:mm:ss and in the same format how long they have been working on it.
