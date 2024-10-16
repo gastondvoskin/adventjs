@@ -8,47 +8,41 @@ function selectSleigh(distance, sleighs) {
   for (let i = sleighs.length - 1; i >= 0; i--) {
     const sleigh = sleighs[i]; 
     const {name, consumption} = sleigh; 
-    console.log(name, consumption); 
-    const totalConsumption = consumption * distance; 
-    console.log(totalConsumption); 
 
-    console.log(totalConsumption <= BATTERY)
+    const totalConsumption = consumption * distance; 
     if (totalConsumption <= BATTERY) {
-      console.log("here");
       return name; 
     }
   }
-  console.log("No suitable sleigh found"); 
   return null; 
 }
-// return null; 
+
+
 // TESTING
-console.log("check in node", selectSleigh(201, [
-  {name: "worst", consumption: 0.1}, 
-  {name: "middle", consumption: 0.5}, 
-  {name: "best", consumption: 1}, 
-])); 
-
-
-// console.log(selectSleigh(20, [
-//   {name: "worst", consumption: 0.1}, 
-//   {name: "middle", consumption: 0.5}, 
-//   {name: "best", consumption: 1}, 
-// ])); 
-
-// console.log(selectSleigh(21, [
-//   {name: "worst", consumption: 0.1}, 
-//   {name: "middle", consumption: 0.5}, 
-//   {name: "best", consumption: 1}, 
-// ])); 
-
-// console.log(selectSleigh(41, [
+// console.log("check in node", selectSleigh(201, [
 //   {name: "worst", consumption: 0.1}, 
 //   {name: "middle", consumption: 0.5}, 
 //   {name: "best", consumption: 1}, 
 // ])); 
 
 
+// console.log(selectSleigh(20, [ // best 
+//   {name: "worst", consumption: 0.1}, 
+//   {name: "middle", consumption: 0.5}, 
+//   {name: "best", consumption: 1}, 
+// ])); 
+
+// console.log(selectSleigh(21, [ // middle
+//   {name: "worst", consumption: 0.1}, 
+//   {name: "middle", consumption: 0.5}, 
+//   {name: "best", consumption: 1}, 
+// ])); 
+
+// console.log(selectSleigh(41, [ // worst
+//   {name: "worst", consumption: 0.1}, 
+//   {name: "middle", consumption: 0.5}, 
+//   {name: "best", consumption: 1}, 
+// ])); 
 
 // const distance = 30
 // const sleighs = [
@@ -60,29 +54,26 @@ console.log("check in node", selectSleigh(201, [
 // console.log(selectSleigh(distance, sleighs)) // => "Madeval"
 
 
+
 // LOGIC
 /* 
 const battery = 20 watts; 
-constumption is consumed watts for each distance unit
-constumptio = constumption per unit; 
+consumption is the consumed watts for each distance unit
+totalconsumption = distance * consumption; 
 
-cover the distance: 
-distance = 30; 
-
-totalConstumption = distance * consumption; 
-
-eg. gorusuke consumes 30 * 0.3 = 9; 
+eg. 
+gorusuke consumes 30 * 0.3 = 9; 
 medeval consumes 30 * 0.5 = 15; 
 lolivier consumes 30 * 0.7 = 21; 
 hyuuh consumes 30 * 1 = 30; 
 
-hyuuh an lolivier can't cover the distance because totalConsumption > battery
+hyuuh and lolivier can't cover the distance because totalConsumption > battery
 the next one (from best to worst) is medeval -> medeval is the best available for this case. 
 
 pseudocode: 
-iterate sleighs from last (best) to first (worst). For each calculate its total consumption (distance * constumption). If totalConsumption <= battery return the sleigh's name. After the loop, return null. 
-
+iterate sleighs from last (best) to first (worst). For each calculate its total consumption (distance * consumption). If totalConsumption <= battery return the sleigh's name. After the loop, return null. 
 */
+
 
 // EXERCISE
 // Santa Claus has new electric sleighs but he must control the electricity consumption because he only has a 20W battery.
