@@ -21,8 +21,9 @@ function selectSleigh(distance, sleighs) {
   console.log("No suitable sleigh found"); 
   return null; 
 }
+// return null; 
 // TESTING
-console.log(selectSleigh(201, [
+console.log("check in node", selectSleigh(201, [
   {name: "worst", consumption: 0.1}, 
   {name: "middle", consumption: 0.5}, 
   {name: "best", consumption: 1}, 
