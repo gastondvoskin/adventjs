@@ -3,9 +3,42 @@
 // }
 
 function getFilesToBackup(lastBackup, changes) {
-  return []
-}
+  let filesToBackup = []; 
 
+  changes.forEach(change => {
+    const [currentId, currentTimestamp] = change; 
+    console.log(currentTimestamp); 
+    console.log(currentTimestamp !== lastBackup); 
+    if (currentTimestamp !== lastBackup && !filesToBackup.includes(currentId)) {
+      filesToBackup.push(currentId); 
+      console.log(filesToBackup)
+    }
+  });
+
+  const sortedFilesToBackup = [...filesToBackup].sort((a, b) => a - b); 
+  console.log(filesToBackup); 
+  console.log(sortedFilesToBackup); 
+  return sortedFilesToBackup; 
+}
+// TESTING
+getFilesToBackup(10, [[1, 1], [1, 2], [5, 10], [3, 10], [3, 10]]); 
+
+const lastBackup = 1546300800
+const changes = [
+  [ 3, 1546301100 ],
+  [ 2, 1546300800 ],
+  [ 1, 1546300800 ],
+  [ 1, 1546300900 ],
+  [ 1, 1546301000 ]
+]
+getFilesToBackup(lastBackup, changes) // => [ 1, 3 ]
+
+
+
+// LOGIC
+/* 
+Initialize idsOfFilesToBackup. iterate changes. Compare the internal timestamp with the timpestamp. If they are not equal && idsOfFilesToBackup does not include the id, push it. After the loop, sort idsOfFilesToBackup. 
+*/
 
 
 
