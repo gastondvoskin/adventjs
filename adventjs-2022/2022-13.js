@@ -7,21 +7,18 @@ function getFilesToBackup(lastBackup, changes) {
 
   changes.forEach(change => {
     const [currentId, currentTimestamp] = change; 
-    console.log(currentTimestamp); 
-    console.log(currentTimestamp !== lastBackup); 
     if (currentTimestamp !== lastBackup && !filesToBackup.includes(currentId)) {
       filesToBackup.push(currentId); 
-      console.log(filesToBackup)
     }
   });
 
   const sortedFilesToBackup = [...filesToBackup].sort((a, b) => a - b); 
-  console.log(filesToBackup); 
-  console.log(sortedFilesToBackup); 
   return sortedFilesToBackup; 
 }
+
 // TESTING
-getFilesToBackup(10, [[1, 1], [1, 2], [5, 10], [3, 10], [3, 10]]); 
+console.log(getFilesToBackup(10, [[1, 10]])); 
+console.log(getFilesToBackup(10, [[1, 1], [2, 10], [1, 2]])); 
 
 const lastBackup = 1546300800
 const changes = [
@@ -31,7 +28,7 @@ const changes = [
   [ 1, 1546300900 ],
   [ 1, 1546301000 ]
 ]
-getFilesToBackup(lastBackup, changes) // => [ 1, 3 ]
+console.log(getFilesToBackup(lastBackup, changes)) // => [ 1, 3 ]
 
 
 
