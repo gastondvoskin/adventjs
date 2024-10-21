@@ -3,23 +3,46 @@
 // }
 
 function getOptimalPath(path) {
-  let currentIndexsByRow = Array(path.length).fill(0); 
-  console.log(currentIndexsByRow); 
+  let cols = Array(path.length).fill(0); 
+  console.log(cols); 
 
-  let sumsOfPaths = []; 
+  // let sumsOfPaths = [];
+  let maxValue = 0;  
+  
+  let currentSum = 0; 
 
   for (let i = 0; i < path.length; i++) {
-    const element = path[i];
-    
+    const currentRow = path[i];
+    console.log(currentRow);
+    const currentCol = cols[i]; 
+    console.log(currentCol); 
+    const currentNumber = currentRow[currentCol]; 
+    console.log(currentNumber); 
+
+    currentSum += currentNumber;
+    console.log(currentSum); 
+
+    console.log(i === path.length - 1, currentSum > maxValue, )
+    if (i === path.length - 1 && currentSum > maxValue) {
+      maxValue = currentSum; 
+      // modify cols; 
+    }
+    console.log(maxValue); 
+    // const currNumber = path[i]; 
+    // let currentSum = 0; 
+    // currentSum += 
   }
 
 }
 
-getOptimalPath([4, 2, 5, 6]);
+getOptimalPath([[10], [1, 2]]);
+// getOptimalPath([4, 2, 5, 6]);
 
 
 // LOGIC
 /* 
+
+
 iterate path, save all the possible sums (one for each path). Che the max value of the saved paths. 
 let pathsSums = [];
 
@@ -46,9 +69,9 @@ path.length === 3
 0 1 1
 
 path.length === 4
-0 0 0 0 
-0 0 0 1
-0 0 1 0 
+0 0 0 0         (0, 1, 2, 3)
+0 0 0 1         (0, 1, 2, 3)
+0 0 1 0         (0, 1, 2, 3)
 0 0 1 1 
 0 1 0 0
 0 1 0 1 
