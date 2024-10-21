@@ -2,40 +2,58 @@
 //   return 0
 // }
 
-function getOptimalPath(path) {
-  let cols = Array(path.length).fill(0); 
-  console.log(cols); 
+// function getOptimalPath(path) {
+//   let cols = Array(path.length).fill(0); 
+//   console.log(cols); 
 
-  // let sumsOfPaths = [];
-  let maxValue = 0;  
+//   // let sumsOfPaths = [];
+//   let maxValue = 0;  
   
-  let currentSum = 0; 
+//   let currentSum = 0; 
 
-  for (let i = 0; i < path.length; i++) {
-    const currentRow = path[i];
-    console.log(currentRow);
-    const currentCol = cols[i]; 
-    console.log(currentCol); 
-    const currentNumber = currentRow[currentCol]; 
-    console.log(currentNumber); 
+//   for (let i = 0; i < path.length; i++) {
+//     const currentRow = path[i];
+//     console.log(currentRow);
+//     const currentCol = cols[i]; 
+//     console.log(currentCol); 
+//     const currentNumber = currentRow[currentCol]; 
+//     console.log(currentNumber); 
 
-    currentSum += currentNumber;
-    console.log(currentSum); 
+//     currentSum += currentNumber;
+//     console.log(currentSum); 
 
-    console.log(i === path.length - 1, currentSum > maxValue, )
-    if (i === path.length - 1 && currentSum > maxValue) {
-      maxValue = currentSum; 
-      // modify cols; 
+//     console.log(i === path.length - 1, currentSum > maxValue, )
+//     if (i === path.length - 1 && currentSum > maxValue) {
+//       maxValue = currentSum; 
+//       // modify cols; 
+//     }
+//     console.log(maxValue); 
+//     // const currNumber = path[i]; 
+//     // let currentSum = 0; 
+//     // currentSum += 
+//   }
+
+// }
+
+
+
+
+function getOptimalPath(path) {
+  let sums = []; 
+
+  for (let rowIndex = path.length - 1; rowIndex >= 0; rowIndex--) {
+    console.log(rowIndex)
+    const row = path[rowIndex]; 
+    console.log(row); 
+    for (let colIndex = 0; colIndex < row.length - 1; colIndex++) {
+      const number_A = row[colIndex];
+      const number_B = row[colIndex + 1];
+      console.log(number_A, number_B);
     }
-    console.log(maxValue); 
-    // const currNumber = path[i]; 
-    // let currentSum = 0; 
-    // currentSum += 
   }
-
 }
 
-getOptimalPath([[10], [1, 2]]);
+getOptimalPath([[1], [2, 3], [4, 5, 6]]);
 // getOptimalPath([4, 2, 5, 6]);
 
 
@@ -79,7 +97,17 @@ path.length === 4
 0 1 1 1 
 
 
+0
+1   2
+3   4   5
+6   7   8   9
 
+
+
+//       0
+//     1   2
+//   3   4   5
+// 6   7   8   9
 
 up to 1024 paths (Math.pow(2, 10))
 //     0
