@@ -1,170 +1,114 @@
+// WIP 
+
 // function getOptimalPath(path) {
 //   return 0
 // }
 
-// function getOptimalPath(path) {
-//   let cols = Array(path.length).fill(0); 
-//   console.log(cols); 
-
-//   // let sumsOfPaths = [];
-//   let maxValue = 0;  
-  
-//   let currentSum = 0; 
-
-//   for (let i = 0; i < path.length; i++) {
-//     const currentRow = path[i];
-//     console.log(currentRow);
-//     const currentCol = cols[i]; 
-//     console.log(currentCol); 
-//     const currentNumber = currentRow[currentCol]; 
-//     console.log(currentNumber); 
-
-//     currentSum += currentNumber;
-//     console.log(currentSum); 
-
-//     console.log(i === path.length - 1, currentSum > maxValue, )
-//     if (i === path.length - 1 && currentSum > maxValue) {
-//       maxValue = currentSum; 
-//       // modify cols; 
-//     }
-//     console.log(maxValue); 
-//     // const currNumber = path[i]; 
-//     // let currentSum = 0; 
-//     // currentSum += 
-//   }
-
-// }
-
-
-
 
 function getOptimalPath(path) {
-  let sums = []; 
+  let sums = Array(path.length).fill(0); 
+  // console.log(sums); 
 
-  for (let rowIndex = path.length - 1; rowIndex >= 0; rowIndex--) {
-    console.log(rowIndex)
-    const row = path[rowIndex]; 
-    console.log(row); 
-    for (let colIndex = 0; colIndex < row.length - 1; colIndex++) {
-      const number_A = row[colIndex];
-      const number_B = row[colIndex + 1];
-      console.log(number_A, number_B);
-    }
+  for (let i = path.length - 1; i >= 0; i--) {
+    const row = path[i];
+    // console.log(i, row);
+    for (let j = 0; j < row.length - 1; j++) {
+      const number_A = row[j];
+      const number_B = row[j + 1];
+      const max = Math.max(number_A, number_B); 
+      console.log({j}, {number_A}, {number_B}, {max}, ); 
+      console.log({j}, "sums[j]:", sums[j], sums)
+      sums[j] = sums[j] + max; 
+      console.log({j}, {sums}); 
+    } 
+    sums.splice(-1); 
+    console.log(sums); 
   }
+  // sums parse to a number and add the first element of the pyramid
 }
 
-getOptimalPath([[1], [2, 3], [4, 5, 6]]);
-// getOptimalPath([4, 2, 5, 6]);
-
-
-// LOGIC
+// TESTING
+// getOptimalPath([
+//   [0], 
+//   [1, 2]
+// ]);
+getOptimalPath([
+  [0], 
+  [1, 2], 
+  [3, 4, 5]
+]);
 /* 
+0 
+1 2
+3 4 5
+
+0 
+1 2 
+4 5
+
+0 
+5 7 
+
+0 
+7
+
+7
 
 
-iterate path, save all the possible sums (one for each path). Che the max value of the saved paths. 
-let pathsSums = [];
 
-paths.push ( path[0][0] + path[1][0] + path[2][0] )
-paths.push ( path[0][0] + path[1][0] + path[2][1] )
-paths.push( path[] )
+*/
+// getOptimalPath([[1], [2, 3], [4, 5, 6]]);
 
-0 0 0
-0 0 1
-0 1 0 
-0 1 1
+/* 
+LOGIC
 
-path.length === 1
-0
+0 
+1 2
+3 4 5
+6 7 8 9
 
-path.length === 2
-0 0
-0 1
-
-path.length === 3
-0 0 0 
-0 0 1 
-0 1 0 
-0 1 1
-
-path.length === 4
-0 0 0 0         (0, 1, 2, 3)
-0 0 0 1         (0, 1, 2, 3)
-0 0 1 0         (0, 1, 2, 3)
-0 0 1 1 
-0 1 0 0
-0 1 0 1 
-0 1 1 0
-0 1 1 1 
-
-
-0
-1   2
-3   4   5
+      0
+    1   2
+  3   4   5
 6   7   8   9
 
 
+starting from top, each node has access to the column with the same index and to the column with one more index. 
+starting from bottom, reduce the array (max 10 numbers) in one element getting only the max of each pair. 
+then, add these numbers to each element in the next row.
+eg: 
+0. 
+      0
+    1   2
+  3   4   5
+6   7   8   9
 
-//       0
-//     1   2
-//   3   4   5
-// 6   7   8   9
+1. 
+      0
+    1   2
+  3   4   5
+  7   8   9     get the max of each pair
 
-up to 1024 paths (Math.pow(2, 10))
-//     0
-//    / \
-//   7   4
-//  / \ / \
-// 2   4   6
+2. 
+      0
+    1    2
+ 7+3  12   14   sum the max to next row
 
-// [
-//   [0],
-//   [7, 4],
-//   [2, 4, 6]
-// ]
+
+3. 
+      0
+    1   2
+    12  14      get the max of each pair
+
+4. 
+      0
+    13   16     sum the max to next row
+
+5. 
+      0
+      16        get the max of each pair
+
+5. 
+      16        sum the max to next row
+
 */
-
-
-
-
-// TESTING
-
-
-
-// EXERCISE
-// Santa Claus is building ice pyramids in the North Pole to train his reindeers.
-
-// Each reindeer starts at the top of the pyramid and must choose the optimal path down to travel it in the shortest time possible. Each level has a number that determines the time it takes to get there.
-
-// When arriving at a position, the reindeer can only slide down and diagonally to the left or right. Visually, the pyramid looks like this:
-
-//     0
-//    / \
-//   7   4
-//  / \ / \
-// 2   4   6
-// In code we represent it like this:
-
-// [
-//   [0],
-//   [7, 4],
-//   [2, 4, 6]
-// ]
-// Santa Claus needs a program that tells him what the minimum time each reindeer can take to slide down the pyramid using the optimal path.
-
-// In the previous example, the optimal path is 0 -> 4 -> 4, which takes a total of 0 + 4 + 4 = 8 units of time. The result would be: 8.
-
-// Why is it not 6? It is not 0 -> 4 -> 2 because when you go down to the position of the 4 you can no longer diagonally reach the position of the 2. So the shortest possible path is 8. More examples:
-
-// getOptimalPath([[0], [2, 3]]) // 2
-
-// getOptimalPath([[0], [3, 4], [9, 8, 1]]) // 5
-
-// getOptimalPath([[1], [1, 5], [7, 5, 8], [9, 4, 1, 3]]) // 8
-// To keep in mind:
-
-// Keep in mind that you can only go down diagonally and down from any position.
-// The first position of the pyramid can be different from 0.
-// Pyramids can have up to 10 levels.
-// The numbers in the pyramids can be negative.
-
-
