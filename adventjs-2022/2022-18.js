@@ -9,7 +9,7 @@ function dryNumber(dry, numbers) {
   const parsedDry = `${dry}`;
   console.log(parsedDry); 
 
-  let i = 1; 
+  let i = 0; 
   while (i <= numbers) {
     console.log(i); 
     let element = `${i}`; 
@@ -26,6 +26,9 @@ function dryNumber(dry, numbers) {
   return finalArray; 
 }
 
+// TEST
+console.log(dryNumber(0, 15));
+console.log(dryNumber(2, 3));
 console.log(dryNumber(1, 15));
 console.log(dryNumber(2, 20));
 
