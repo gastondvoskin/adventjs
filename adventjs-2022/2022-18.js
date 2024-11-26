@@ -26,19 +26,10 @@ function dryNumber(dry, numbers) {
 
 // TEST
 console.log(dryNumber(0, 2));
-console.log(dryNumber(0, 15));
-console.log(dryNumber(2, 3));
-console.log(dryNumber(1, 15));
-console.log(dryNumber(2, 20));
-
-// LOGIC
-/* 
-initialize an empty array finalArray. 
-parse dry into a string; 
-Iterate from 1 to numbers. 
-parse the element into a string. 
-if the parsed element includes dry, push it to the finalArray
-*/
+// console.log(dryNumber(0, 15));
+// console.log(dryNumber(2, 3));
+// console.log(dryNumber(1, 15));
+// console.log(dryNumber(2, 20));
 
 
 // EXERCISE
