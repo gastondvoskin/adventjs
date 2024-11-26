@@ -4,10 +4,39 @@
 
 
 function dryNumber(dry, numbers) {
-  return []
+  let finalArray = [];
+  console.log(dry); 
+  const parsedDry = `${dry}`;
+  console.log(parsedDry); 
+
+  let i = 1; 
+  while (i <= numbers) {
+    console.log(i); 
+    let element = `${i}`; 
+    console.log(element);
+    const elementSplit = element.split(""); 
+    console.log(elementSplit); 
+    
+    if (elementSplit.includes(parsedDry)) {
+      console.log(element); 
+      finalArray.push(element); 
+    }
+    i++; 
+  }
+  return finalArray; 
 }
 
+console.log(dryNumber(1, 15));
+console.log(dryNumber(2, 20));
 
+// LOGIC
+/* 
+initialize an empty array finalArray. 
+parse dry into a string; 
+Iterate from 1 to numbers. 
+parse the element into a string. 
+if the parsed element includes dry, push it to the finalArray
+*/
 
 
 // EXERCISE
