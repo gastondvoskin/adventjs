@@ -4,22 +4,26 @@
 
 
 function dryNumber(dry, numbers) {
+  const max = numbers; 
+  const missingNumber = dry; 
+  // console.log(missingNumber); 
+
   let finalArray = [];
-  console.log(dry); 
-  const parsedDry = `${dry}`;
-  console.log(parsedDry); 
+
+  const parsedMissingNumber = `${missingNumber}`;
+  // console.log(parsedMissingNumber); 
 
   let i = 0; 
-  while (i <= numbers) {
-    console.log(i); 
-    let element = `${i}`; 
-    console.log(element);
-    const elementSplit = element.split(""); 
-    console.log(elementSplit); 
+  while (i <= max) {
+    // console.log(i); 
+    let parsedI = `${i}`; 
+    // console.log(parsedI); 
+    const splitParsedI = parsedI.split(""); 
+    // console.log(splitParsedI); 
     
-    if (elementSplit.includes(parsedDry)) {
-      console.log(element); 
-      finalArray.push(element); 
+    if (splitParsedI.includes(parsedMissingNumber)) {
+      console.log(parsedI); 
+      finalArray.push(Number(parsedI)); 
     }
     i++; 
   }
@@ -27,6 +31,7 @@ function dryNumber(dry, numbers) {
 }
 
 // TEST
+console.log(dryNumber(0, 2));
 console.log(dryNumber(0, 15));
 console.log(dryNumber(2, 3));
 console.log(dryNumber(1, 15));
