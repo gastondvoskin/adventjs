@@ -6,28 +6,22 @@
 function dryNumber(dry, numbers) {
   const max = numbers; 
   const missingNumber = dry; 
-  // console.log(missingNumber); 
 
-  let finalArray = [];
+  let numbersWithoutInk = [];
 
   const parsedMissingNumber = `${missingNumber}`;
-  // console.log(parsedMissingNumber); 
 
   let i = 0; 
   while (i <= max) {
-    // console.log(i); 
     let parsedI = `${i}`; 
-    // console.log(parsedI); 
     const splitParsedI = parsedI.split(""); 
-    // console.log(splitParsedI); 
     
     if (splitParsedI.includes(parsedMissingNumber)) {
-      console.log(parsedI); 
-      finalArray.push(Number(parsedI)); 
+      numbersWithoutInk.push(Number(parsedI)); 
     }
     i++; 
   }
-  return finalArray; 
+  return numbersWithoutInk; 
 }
 
 // TEST
