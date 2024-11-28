@@ -5,28 +5,12 @@
 function sortToys(toys, positions) {
 
   const toysWithPositions = toys.map((toy, index) => {
-    console.log(index); 
-    const toyWithPosition = {
-      toy: toy, 
-      position: positions[index],
-    }
-    return toyWithPosition; 
+    return {toy: toy, position: positions[index]}
   })
-  // let toysWithPositions = []; 
-  // for (let i = 0; i < toys.length; i++) {
-  //   const toy = toys[i];
-  //   const position = positions[i];
-  //   const toyWithPosition = {toy, position}; 
-  //   toysWithPositions.push(toyWithPosition); 
-  //   // console.log( toy, position, toyWithPosition); 
-  // }
-  console.log(toysWithPositions); 
 
   toysWithPositions.sort((a, b) => a.position - b.position); 
-  console.log(toysWithPositions); 
 
   const sortedToys = toysWithPositions.map((element) => element.toy); 
-  console.log(sortedToys); 
   return sortedToys; 
 }
 
