@@ -3,14 +3,23 @@
 // }
 
 function sortToys(toys, positions) {
-  let toysWithPositions = []; 
-  for (let i = 0; i < toys.length; i++) {
-    const toy = toys[i];
-    const position = positions[i];
-    const toyWithPosition = {toy, position}; 
-    toysWithPositions.push(toyWithPosition); 
-    // console.log( toy, position, toyWithPosition); 
-  }
+
+  const toysWithPositions = toys.map((toy, index) => {
+    console.log(index); 
+    const toyWithPosition = {
+      toy: toy, 
+      position: positions[index],
+    }
+    return toyWithPosition; 
+  })
+  // let toysWithPositions = []; 
+  // for (let i = 0; i < toys.length; i++) {
+  //   const toy = toys[i];
+  //   const position = positions[i];
+  //   const toyWithPosition = {toy, position}; 
+  //   toysWithPositions.push(toyWithPosition); 
+  //   // console.log( toy, position, toyWithPosition); 
+  // }
   console.log(toysWithPositions); 
 
   toysWithPositions.sort((a, b) => a.position - b.position); 
@@ -22,16 +31,16 @@ function sortToys(toys, positions) {
 }
 
 // TEST
-// sortToys(["b", "a"], [2,1]) // ["a", "b"] 
+sortToys(["b", "a"], [2,1]) // ["a", "b"] 
 
-// const toys = ['ball', 'doll', 'car', 'puzzle']
-// const positions = [2, 3, 1, 0]
-// console.log(sortToys(toys, positions))
+const toys = ['ball', 'doll', 'car', 'puzzle']
+const positions = [2, 3, 1, 0]
+console.log(sortToys(toys, positions))
 // ['puzzle', 'car', 'ball', 'doll']
 
-// const moreToys = ['pc', 'xbox', 'ps4', 'switch', 'nintendo']
-// const morePositions = [8, 6, 5, 7, 9]
-// console.log(sortToys(moreToys, morePositions))
+const moreToys = ['pc', 'xbox', 'ps4', 'switch', 'nintendo']
+const morePositions = [8, 6, 5, 7, 9]
+console.log(sortToys(moreToys, morePositions))
 // ['ps4', 'xbox', 'switch', 'pc', 'nintendo']
 
 
