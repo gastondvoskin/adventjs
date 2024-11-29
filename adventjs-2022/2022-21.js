@@ -8,6 +8,18 @@ function printTable(gifts) {
 
 
 
+/* 
+LOGIC
+find the name with longest length, also comparing the strinig "gift". 
+find the max quantity, convert it to string, compare it with "quantity". 
+initialize finalString. 
+write line 1. 
+concatanate line 1 to finalString. .repeat \n
+create a function to write line 2. currentString += `| ${name}${spacesAfterName}| ${quantity}${spacesAfterQuantity}| \n`
+write line 3. 
+iterate the gifts using the function inside. 
+write last line as line 1 but withouth the line break. 
+*/
 
 
 // EXERCISE
