@@ -3,19 +3,19 @@
 // }
 
 const getMaxLength = (gifts, element) => {
-  console.log(gifts); 
+  // console.log(gifts); 
   let maxLength = element.length; 
-  console.log(maxLength); 
+  // console.log(maxLength); 
 
   for (let i = 0; i < gifts.length; i++) {
     const gift = gifts[i];
     const currentElement = `${gift[element]}`;
-    console.log(currentElement); 
+    // console.log(currentElement); 
     const currentElementLength = currentElement.length;
     if (currentElementLength > maxLength) {
       maxLength = currentElementLength
     }
-    console.log(maxLength); 
+    // console.log(maxLength); 
   }
   return maxLength;
 }
@@ -24,12 +24,35 @@ const getMaxLength = (gifts, element) => {
 // console.log(getMaxLength([{ name: '12345', quantity: 12345678 }, { name: '12345', quantity: 123456789 }], "quantity")); 
 
 
+
 function printTable(gifts) {
   const namesMaxLength = getMaxLength(gifts, "name"); 
-  console.log(namesMaxLength); 
+  // console.log(namesMaxLength); 
   const quantitiesMaxLength = getMaxLength(gifts, "quantity"); 
-  console.log(quantitiesMaxLength); 
+  // console.log(quantitiesMaxLength); 
+  let drawnTable = ""; 
+  const tableLength = 2 + namesMaxLength + 3 + quantitiesMaxLength + 2; 
+  // console.log(tableLength); 
 
+  // FIRST LINE: ++++
+  drawnTable += "+".repeat(tableLength); 
+  drawnTable += "\n"; 
+  // console.log(drawnTable); 
+
+  // IMPLEMENT SECNDS LINE: GIFT AND WUANTITY LINE
+  // ...
+
+  // THIRD LINE: ---
+  drawnTable += `| ${"-".repeat(namesMaxLength)} | ${"-".repeat(quantitiesMaxLength)}}`; 
+  console.log(drawnTable); 
+  
+  // ITERATE GIFTS AND IMPLEMENT CALCULATING THE MISSING SPACE
+  // ... 
+
+  // LAST LINE
+  drawnTable += "*".repeat(tableLength); 
+  // console.log(drawnTable); 
+  return drawnTable; 
 }
 
 // TEST printTable
