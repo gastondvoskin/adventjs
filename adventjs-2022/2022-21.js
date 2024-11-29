@@ -2,10 +2,42 @@
 //   return ''
 // }
 
+const getMaxLength = (gifts, element) => {
+  console.log(gifts); 
+  let maxLength = element.length; 
+  console.log(maxLength); 
+
+  for (let i = 0; i < gifts.length; i++) {
+    const gift = gifts[i];
+    const currentElement = `${gift[element]}`;
+    console.log(currentElement); 
+    const currentElementLength = currentElement.length;
+    if (currentElementLength > maxLength) {
+      maxLength = currentElementLength
+    }
+    console.log(maxLength); 
+  }
+  return maxLength;
+}
+// TEST getMaxLength
+// console.log(getMaxLength([{ name: '123456', quantity: 1 }, { name: '123', quantity: 1 }], "name")); 
+// console.log(getMaxLength([{ name: '12345', quantity: 12345678 }, { name: '12345', quantity: 123456789 }], "quantity")); 
+
+
 function printTable(gifts) {
-  return ''
+  const namesMaxLength = getMaxLength(gifts, "name"); 
+  console.log(namesMaxLength); 
+  const quantitiesMaxLength = getMaxLength(gifts, "quantity"); 
+  console.log(quantitiesMaxLength); 
+
 }
 
+// TEST printTable
+printTable([
+  { name: 'Game', quantity: 1 },
+  { name: 'Bike', quantity: 1 },
+  { name: 'Book', quantity: 123456789 }
+])
 
 
 /* 
