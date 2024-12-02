@@ -8,6 +8,17 @@ function createFrame(names) {
   return '*'
 }
 
+/* 
+LOGIC
+get the max length of names lengths. 
+const firstLine = "*".repeat(maxLength + 4); 
+let framedNames = firstLine; 
+map names. for each element return the asterisk, the space, the name, the blankSpaces, a space, an asterisk. 
+forEach name concatenate to framedNames string. 
+add the last line. framedNames += firstLine; 
+*/
+
+
 // EXERCISE
 // Santa Claus 🎅 wants to frame the names of the good children to decorate his workshop 🖼️, but the frame must follow specific rules. Your task is to help the elves generate this magical frame.
 
