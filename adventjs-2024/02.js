@@ -3,32 +3,36 @@
 //   return '*'
 // }
 
+
 function createFrame(names) {
-  const namesLengths = names.map((name) => name.length); 
-  const maxNameLength = Math.max(...namesLengths); 
-  const frameWidth = maxNameLength + 4; 
+  const namesLengths = names.map((name) => name.length);
+  const maxNameLength = Math.max(...namesLengths);
 
-  const ASTERISK = "*"; 
-  const SPACE = " "; 
-  const BREAK = "\n"
+  const frameWidth = maxNameLength + 4;
 
-  const frameTop = `${ASTERISK.repeat(frameWidth)}${BREAK}`; 
+  const ASTERISK = "*";
+  const SPACE = " ";
+  const BREAK = "\n";
+
+  const frameTop = `${ASTERISK.repeat(frameWidth)}${BREAK}`;
   const frameBottom = `${ASTERISK.repeat(frameWidth)}`;
 
-  let framedNames = ""; 
-  framedNames += frameTop; 
+  let framedNames = "";
+  framedNames += frameTop;
 
   names.forEach((name) => {
-    const framedName = `${ASTERISK}${SPACE}${name}${SPACE.repeat(maxNameLength - name.length)}${SPACE}${ASTERISK}${BREAK}`; 
+    const framedName = `${ASTERISK}${SPACE}${name}${SPACE.repeat(
+      maxNameLength - name.length)}${SPACE}${ASTERISK}${BREAK}`;
     framedNames += framedName;
-  })
+  });
 
-  framedNames += frameBottom; 
-  return framedNames; 
+  framedNames += frameBottom;
+  return framedNames;
 }
 
+// TEST
+console.log(createFrame([1, 12, 12345678]));
 
-// TEST 
 // console.log(createFrame(['a', 'bb', 'ccc']))
 // // Expected result:
 // *******
@@ -51,7 +55,6 @@ function createFrame(names) {
 // * midu *
 // ********
 
-
 /* 
 LOGIC
 get the max length of names lengths. 
@@ -61,7 +64,6 @@ map names. for each element return the asterisk, the space, the name, the blankS
 forEach name concatenate to framedNames string. 
 add the last line. framedNames += firstLine; 
 */
-
 
 // EXERCISE
 // Santa Claus 🎅 wants to frame the names of the good children to decorate his workshop 🖼️, but the frame must follow specific rules. Your task is to help the elves generate this magical frame.
@@ -100,3 +102,17 @@ add the last line. framedNames += firstLine;
 // *******
 
 // createFrame(['a', 'bb', 'ccc', 'dddd'])
+
+
+
+// OLD
+// let maxNameLength = 0;
+// names.forEach(name => {
+//   if (name.length > maxNameLength) {
+//     maxNameLength = name.length;
+//   }
+// })
+
+// if (!names) {
+//   return "Invalid input";
+// }
