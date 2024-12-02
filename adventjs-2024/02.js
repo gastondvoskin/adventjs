@@ -4,9 +4,62 @@
 // }
 
 function createFrame(names) {
-  // Code here
-  return '*'
+  const namesLengths = names.map((name) => name.length); 
+  // console.log(namesLengths); 
+  const maxNameLength = Math.max(...namesLengths); 
+  // console.log(maxNameLength); 
+  const frameWidth = maxNameLength + 4; 
+  // console.log(frameWidth); 
+
+  const ASTERISK = "*"; 
+  const SPACE = " "; 
+  const BREAK = "\n"
+  const frameTop = `${ASTERISK.repeat(frameWidth)}${BREAK}`; 
+  const frameBottom = `${ASTERISK.repeat(frameWidth)}`;
+  // console.log(frameTop); 
+
+  let framedNames = ""; 
+  framedNames += frameTop; 
+  // console.log(framedNames); 
+
+  names.forEach((name) => {
+    const framedName = `${ASTERISK}${SPACE}${name}${SPACE.repeat(maxNameLength - name.length)}${SPACE}${ASTERISK}${BREAK}`; 
+    console.log(framedName); 
+    framedNames += framedName;
+  })
+  // console.log(framedNames); 
+  
+  framedNames += frameBottom; 
+  // console.log(framedNames); 
+  
+  return framedNames; 
+  
 }
+
+
+// TEST 
+// console.log(createFrame(['a', 'bb', 'ccc']))
+// // Expected result:
+// *******
+// * a   *
+// * bb  *
+// * ccc *
+// *******
+
+// console.log(createFrame(['midu', 'madeval', 'educalvolpz']))
+// // Expected result:
+// ***************
+// * midu        *
+// * madeval     *
+// * educalvolpz *
+// ***************
+
+// console.log(createFrame(['midu']));
+// // Expected result:
+// ********
+// * midu *
+// ********
+
 
 /* 
 LOGIC
