@@ -4,32 +4,23 @@
 // }
 
 function organizeInventory(inventory) {
-  // step 0
   let organizedInventory = {}; 
-  
-  // organizedInventory = {edu: {a: 1}};  /* after adding the first object (just to debug) */
 
   for (let i = 0; i < inventory.length; i++) {
     const toy = inventory[i];
     const { name, quantity, category } = toy; 
-    console.log(name, quantity, category);
-    
-    // conditions
+
     if (!organizedInventory[category]) {
-      console.log(i); 
       organizedInventory[category] = {[name]: quantity}; 
     }
     else if (!organizedInventory[category][name]) {
-      console.log(i); 
       organizedInventory[category][name] = quantity; 
     }
     else {
-      console.log(i); 
       organizedInventory[category][name] += quantity; 
     }
   }
   
-  console.log(organizedInventory); 
   return organizedInventory; 
 }
 
