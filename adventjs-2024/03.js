@@ -4,9 +4,100 @@
 // }
 
 function organizeInventory(inventory) {
-  // Code here
-  return {}
+  // step 0
+  let organizedInventory = {}; 
+  
+  // organizedInventory = {edu: {a: 1}};  /* after adding the first object (just to debug) */
+
+  for (let i = 0; i < inventory.length; i++) {
+    const toy = inventory[i];
+    const { name, quantity, category } = toy; 
+    console.log(name, quantity, category);
+    
+    // conditions
+    if (!organizedInventory[category]) {
+      console.log(i); 
+      organizedInventory[category] = {[name]: quantity}; 
+    }
+    else if (!organizedInventory[category][name]) {
+      console.log(i); 
+      organizedInventory[category][name] = quantity; 
+    }
+    else {
+      console.log(i); 
+      organizedInventory[category][name] += quantity; 
+    }
+  }
+  
+  console.log(organizedInventory); 
+  return organizedInventory; 
 }
+
+// TEST
+console.log(organizeInventory([])); // {}
+
+console.log(organizeInventory([{ name: 'a', quantity: 1, category: 'edu' }]));
+
+console.log(organizeInventory([
+  { name: 'a', quantity: 1, category: 'edu' }, 
+  { name: 'b', quantity: 1, category: 'edu' }, 
+])) // {edu: {a: 1, b: 1}}
+
+console.log(organizeInventory([
+  { name: 'a', quantity: 1, category: 'edu' }, 
+  { name: 'a', quantity: 1, category: 'edu' }, 
+])) // {edu: {a: 2}}
+
+
+
+const inventory = [
+  { name: 'doll', quantity: 5, category: 'toys' },
+  { name: 'car', quantity: 3, category: 'toys' },
+  { name: 'ball', quantity: 2, category: 'sports' },
+  { name: 'car', quantity: 2, category: 'toys' },
+  { name: 'racket', quantity: 4, category: 'sports' }
+]
+console.log(organizeInventory(inventory));
+// Expected result:
+// {
+//   toys: {
+//     doll: 5,
+//     car: 5
+//   },
+//   sports: {
+//     ball: 2,
+//     racket: 4
+//   }
+
+const inventory2 = [
+  { name: 'book', quantity: 10, category: 'education' },
+  { name: 'book', quantity: 5, category: 'education' },
+  { name: 'paint', quantity: 3, category: 'art' }
+]
+console.log(organizeInventory(inventory2));
+// Expected result:
+// {
+//   education: {
+//     book: 15
+//   },
+//   art: {
+//     paint: 3
+//   }
+// } 
+
+
+
+
+
+/* 
+LOGIC
+group by category, then group by name. If it does not exist add it to the final object. 
+let organizedInventory = {}; 
+iterate inventory. 
+option 1. category does not exist yet. -> add the category and the name
+option 2. category does exist and name does not exist -> add the name into the existing category
+option 3. category does exist and name does exist -> sum into the name into the category
+*/
 
 
 /* 
