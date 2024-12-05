@@ -4,8 +4,36 @@
 // }
 
 function createXmasTree(height, ornament) {
-  /* Code here */
-  return ''
+  const UDNERSCORE = "_"; 
+  const BREAK = "\n";
+  const HASHTAG = "#"; 
+
+  let tree = ""; 
+
+  let i = 0;
+  while (i < height) {
+    // console.log(i);
+
+    const underscoresQuantity = height - i - 1; 
+    console.log(underscoresQuantity); 
+    const underscores = UDNERSCORE.repeat(underscoresQuantity); 
+    console.log(underscores); 
+
+    const ornamentsQuantity = i * 2 + 1; 
+    console.log(ornamentsQuantity)
+    const ornaments = ornament.repeat(i * 2 + 1); 
+    console.log(ornaments);
+
+    tree += underscores + ornaments + underscores + BREAK; 
+    
+    i++;
+  }
+  console.log(tree); 
+
+
+
+  return tree; 
+
 }
 
 
@@ -35,14 +63,14 @@ tree += UNDERSCORE.repeat(height - 1) + HASHTAG + UNDERSCORE.repeat(height - 1);
 */
 
 // TEST
-console.log(createXmasTree(1, '+'))
+// console.log(createXmasTree(1, '+')); 
 /*
 +
 #
 #
 */
 
-console.log(createXmasTree(2, '+'))
+// console.log(createXmasTree(2, '+')); 
 /*
 _+_
 +++
@@ -50,7 +78,7 @@ _#_
 _#_
 */
 
-// console.log(createXmasTree(3, '+'))
+console.log(createXmasTree(3, '+'))
 /*
 __+__                          3 - 0 - 1     
 _+++_                          3 - 1 - 1  
