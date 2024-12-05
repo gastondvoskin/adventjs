@@ -12,39 +12,27 @@ function createXmasTree(height, ornament) {
 
   let i = 0;
   while (i < height) {
-    // console.log(i);
-
     const underscoresQuantity = height - i - 1; 
-    console.log(underscoresQuantity); 
     const underscores = UDNERSCORE.repeat(underscoresQuantity); 
-    console.log(underscores); 
 
     const ornamentsQuantity = i * 2 + 1; 
-    console.log(ornamentsQuantity)
-    const ornaments = ornament.repeat(i * 2 + 1); 
-    console.log(ornaments);
+    const ornaments = ornament.repeat(ornamentsQuantity); 
 
     tree += underscores + ornaments + underscores + BREAK; 
     
     i++;
   }
-  console.log(tree); 
 
   const underscoresQuantityInLastLine = height - 1; 
-  console.log(underscoresQuantityInLastLine); 
   const underscoresInLastLine = UDNERSCORE.repeat(underscoresQuantityInLastLine); 
-  console.log(underscoresInLastLine); 
 
   const lastLine = underscoresInLastLine + HASHTAG + underscoresInLastLine; 
-  console.log(lastLine); 
   const penultimateLine = lastLine + BREAK; 
-  console.log(penultimateLine); 
 
   const trunk = penultimateLine + lastLine;
   tree += trunk;  
-  console.log(tree); 
+  
   return tree; 
-
 }
 
 
