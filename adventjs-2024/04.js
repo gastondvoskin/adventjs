@@ -30,8 +30,19 @@ function createXmasTree(height, ornament) {
   }
   console.log(tree); 
 
+  const underscoresQuantityInLastLine = height - 1; 
+  console.log(underscoresQuantityInLastLine); 
+  const underscoresInLastLine = UDNERSCORE.repeat(underscoresQuantityInLastLine); 
+  console.log(underscoresInLastLine); 
 
+  const lastLine = underscoresInLastLine + HASHTAG + underscoresInLastLine; 
+  console.log(lastLine); 
+  const penultimateLine = lastLine + BREAK; 
+  console.log(penultimateLine); 
 
+  const trunk = penultimateLine + lastLine;
+  tree += trunk;  
+  console.log(tree); 
   return tree; 
 
 }
@@ -62,15 +73,16 @@ tree += UNDERSCORE.repeat(height - 1) + HASHTAG + UNDERSCORE.repeat(height - 1);
 
 */
 
+
 // TEST
-// console.log(createXmasTree(1, '+')); 
+console.log(createXmasTree(1, '+')); 
 /*
 +
 #
 #
 */
 
-// console.log(createXmasTree(2, '+')); 
+console.log(createXmasTree(2, '+')); 
 /*
 _+_
 +++
@@ -78,7 +90,7 @@ _#_
 _#_
 */
 
-console.log(createXmasTree(3, '+'))
+console.log(createXmasTree(3, '+'));
 /*
 __+__                          3 - 0 - 1     
 _+++_                          3 - 1 - 1  
@@ -86,6 +98,17 @@ _+++_                          3 - 1 - 1
 __#__
 __#__
 */
+
+console.log(createXmasTree(6, '@'))
+// /*
+// _____@_____
+// ____@@@____
+// ___@@@@@___
+// __@@@@@@@__
+// _@@@@@@@@@_
+// @@@@@@@@@@@
+// _____#_____
+// _____#_____
 
 
 
