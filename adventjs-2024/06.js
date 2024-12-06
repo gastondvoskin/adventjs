@@ -6,12 +6,13 @@ function inBox(box) {
   for (let i = 1; i < box.length - 1; i++) {
     const string = box[i];
     const arrayFromString = string.split(""); 
-    // console.log(arrayFromString);
+
     for (let j = 1; j < arrayFromString.length - 1; j++) {
       const character = arrayFromString[j];
       if (character === "*") return true;
     }
   }
+  
   return false; 
 }
 
