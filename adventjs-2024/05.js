@@ -8,23 +8,22 @@ function organizeShoes(shoes) {
   for (let i = 0; i < shoes.length - 1; i++) {
     const shoeOne = shoes[i];
     for (let j = i + 1; j < shoes.length; j++) {
-      console.log(i, j)
+      // console.log(i, j)
       const shoeTwo = shoes[j];
-      console.log(shoeOne); 
-      console.log(shoeTwo); 
+      // console.log(shoeOne); 
+      // console.log(shoeTwo); 
       if (shoeOne.size === shoeTwo.size && shoeOne.type !== shoeTwo.type) {
-        console.log("here"); 
+        // console.log("here"); 
         finalArray.push(shoeOne.size); 
         // delete shoeTwo to avoid duplicating it
         shoes.splice(j, 1); 
-        console.log(shoes); 
+        // console.log(shoes); 
         break;
       }
     }
   }
 
-  console.log(finalArray); 
-
+  // console.log(finalArray); 
   return finalArray; 
 }
 
