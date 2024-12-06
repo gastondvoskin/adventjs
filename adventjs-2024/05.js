@@ -7,6 +7,34 @@ function organizeShoes(shoes) {
 }
 
 
+// TEST
+organizeShoes([
+  { type: 'I', size: 38 },
+  { type: 'R', size: 42 },
+  { type: 'R', size: 38 },
+])
+
+/* 
+LOGIC
+OLD
+let finalArray = []; 
+let orderedShoes = [];
+
+iterate shoes
+  iterate orderedShoes
+    if currentShoe.size === orderedShoe.size && orderedShoe.type !== orderedShoe.size ---> {1. finalArray.push(currentShoe.size)  2. orderedShoes[j] splice }
+  at the end of the second loop ---> orderedShoes.push(currentShoe)
+
+NEW
+let finalArray = []; 
+iterate shoes
+  iterate inside from the second element
+  compare shoeOne to ShoeTwo. if size is equal && type is not equal ---> finalArray.push(size)
+
+return finalArray
+
+*/
+
 /* EXERCISE
 Santa Claus's elves 🧝🧝‍♂️ have found a bunch of mismatched magic boots in the workshop. Each boot is described by two values:
 
