@@ -16,27 +16,17 @@ function drawRace(indices, length) {
     const shiftsQuantity = indices.length - 1 - i;
     
     lane += SHIFT.repeat(shiftsQuantity);
-    // console.log(lane);
     
     lane += SNOW.repeat(length);
-    // console.log(lane);
+
+    const indexToSplice = index < 0
+      ? index 
+      : index + shiftsQuantity
 
     if (index !== 0) {
-      // console.log(i)
       let splitLane = lane.split("");
-      // console.log(lane);  
-      // console.log(i, splitLane); 
-      
-      if (index > 0) {
-        splitLane.splice(index + shiftsQuantity, 1, REINDEER);
-      } 
-      else {
-        splitLane.splice(index, 1, REINDEER);
-      }
-      // console.log(i, splitLane); 
-
+      splitLane.splice(indexToSplice, 1, REINDEER);
       lane = splitLane.join(""); 
-      // console.log(lane); 
     }
 
     lane += " " + "/" + (i + 1);
@@ -45,40 +35,6 @@ function drawRace(indices, length) {
     }; 
 
     snowTrack += lane; 
-
-    // snowTrack += " " + "/" + (i + 1);
-    // if (i !== indices.length - 1) {
-    //   snowTrack += BREAK; 
-    // }    
-    
-    // else if (index < 0) {
-    //   splitLane = lane.split(""); 
-    //   console.log(splitLane); 
-    //   splitLane.splice(index, 1, REINDEER);
-
-    // }
-
-    
-    // snowTrack += SHIFT.repeat(shiftsQuantity); 
-    
-    // if (index === 0) {
-    //   snowTrack += SNOW.repeat(length); 
-    // }
-    // else if (index > 0) {
-    //   snowTrack += SNOW.repeat(index);
-    //   snowTrack += REINDEER;
-    //   snowTrack += SNOW.repeat(length - index - 1);
-    // }
-    // else if (index < 0) {
-    //   snowTrack += SNOW.repeat(length + index); 
-    //   snowTrack += REINDEER; 
-    //   snowTrack += SNOW.repeat(- index - 1);
-    // }
-
-    // snowTrack += " " + "/" + (i + 1);
-    // if (i !== indices.length - 1) {
-    //   snowTrack += BREAK; 
-    // }
 
   });
 
