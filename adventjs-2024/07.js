@@ -4,9 +4,9 @@
 // }
 
 function fixPackages(packages) {
-  console.log("hello"); 
+  // console.log("hello"); 
   let packagesArray = packages.split(""); 
-  console.log(packagesArray);  
+  // console.log(packagesArray);  
   
   while (packagesArray.includes("(")) {
    
@@ -14,38 +14,44 @@ function fixPackages(packages) {
     let indexOfCorrespondingOpeningParentheses = ""; 
   
     indexOfFirstClosingParentheses = packagesArray.indexOf(")"); 
-    console.log(indexOfFirstClosingParentheses); 
+    // console.log(indexOfFirstClosingParentheses); 
   
     for (let i = indexOfFirstClosingParentheses; i >= 0; i--) {
       const character = packagesArray[i];
-      console.log(character); 
-      console.log(indexOfFirstClosingParentheses); 
+      // console.log(character); 
+      // console.log(indexOfFirstClosingParentheses); 
       if (character === "(") {
-        console.log("here", i)
+        // console.log("here", i)
         indexOfCorrespondingOpeningParentheses = i;
         break;
       }
     }
-    console.log(indexOfCorrespondingOpeningParentheses);
+    // console.log(indexOfCorrespondingOpeningParentheses);
     
     let cahractersToReverse = []; 
     
-    for (let i = indexOfCorrespondingOpeningParentheses + 1; i < indexOfFirstClosingParentheses; i++) {
+    for (let i = indexOfCorrespondingOpeningParentheses + 1; 
+      i < indexOfFirstClosingParentheses; i++) {
       const character = packagesArray[i];
-      console.log(character); 
+      // console.log(character); 
       cahractersToReverse.push(character); 
     }
     const reversedCharacters = cahractersToReverse.reverse(); 
-    console.log(reversedCharacters); 
+    // console.log(reversedCharacters); 
   
-    console.log(packagesArray); 
-    const elementsToDelete = indexOfFirstClosingParentheses - indexOfCorrespondingOpeningParentheses + 1; 
-    packagesArray.splice(indexOfCorrespondingOpeningParentheses, elementsToDelete, ...reversedCharacters); 
-    console.log(packagesArray); 
+    // console.log(packagesArray); 
+    const elementsToDelete = 
+      indexOfFirstClosingParentheses - indexOfCorrespondingOpeningParentheses + 1; 
+    packagesArray.splice(
+      indexOfCorrespondingOpeningParentheses, 
+      elementsToDelete, 
+      ...reversedCharacters
+    ); 
+    // console.log(packagesArray); 
   }
 
   const packagesString = packagesArray.join(""); 
-  console.log(packagesString); 
+  // console.log(packagesString); 
   return packagesString; 
 }
   
