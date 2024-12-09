@@ -1,15 +1,121 @@
-/* @param {string} packages with parentheses
- *  @returns {string} Fixed and sorted packages
-*/
 // function fixPackages(packages) {
 //   // Code here
 //   return ''
 // }
 
 function fixPackages(packages) {
-  // Code here
-  return ''
+  console.log("hello"); 
+  let packagesArray = packages.split(""); 
+  console.log(packagesArray);  
+  
+  while (packagesArray.includes("(")) {
+   
+    let indexOfFirstClosingParentheses = ""; 
+    let indexOfCorrespondingOpeningParentheses = ""; 
+  
+    indexOfFirstClosingParentheses = packagesArray.indexOf(")"); 
+    console.log(indexOfFirstClosingParentheses); 
+  
+    for (let i = indexOfFirstClosingParentheses; i >= 0; i--) {
+      const character = packagesArray[i];
+      console.log(character); 
+      console.log(indexOfFirstClosingParentheses); 
+      if (character === "(") {
+        console.log("here", i)
+        indexOfCorrespondingOpeningParentheses = i;
+        break;
+      }
+    }
+    console.log(indexOfCorrespondingOpeningParentheses);
+    
+    let cahractersToReverse = []; 
+    
+    for (let i = indexOfCorrespondingOpeningParentheses + 1; i < indexOfFirstClosingParentheses; i++) {
+      const character = packagesArray[i];
+      console.log(character); 
+      cahractersToReverse.push(character); 
+    }
+    const reversedCharacters = cahractersToReverse.reverse(); 
+    console.log(reversedCharacters); 
+  
+    console.log(packagesArray); 
+    const elementsToDelete = indexOfFirstClosingParentheses - indexOfCorrespondingOpeningParentheses + 1; 
+    packagesArray.splice(indexOfCorrespondingOpeningParentheses, elementsToDelete, ...reversedCharacters); 
+    console.log(packagesArray); 
+  }
+
+  const packagesString = packagesArray.join(""); 
+  console.log(packagesString); 
+  return packagesString; 
 }
+  
+console.log(fixPackages("a(b(cd(efg)))h"));
+
+
+// TEST
+// console.log(fixPackages("a(bcd)e"));
+// console.log(fixPackages("ab(c)d"));
+// console.log(fixPackages("abc(de)fghi"));
+// console.log(fixPackages("a(b(c((12))))d"));
+
+
+//                 (efg)   
+//                  gfe
+//              (cd gfe)
+//                efgdc
+//             (b efgdc)
+//              cdgfeb
+//            a cdgfeb    h
+//  expected "acdgfebh"
+
+
+/* 
+LOGIC
+
+NEW LOGIC
+find the index of the innermost closingParenthes. 
+find the index of the innermost openingParentheses. 
+reverse the innermost substring and delete the parenthesis. 
+loop until there are no more closingParentheses. 
+return the resulting string.  
+
+
+OLD LOGIC
+let finalString = ""; 
+let openParentherses = 0; 
+let currentStringToConcatenate = ""; 
+
+convert packages into a string andi terate it with a forEach. 
+
+
+
+if character === "(" {
+  openParentheses++;
+}    
+
+if character === ")" {
+  currentStringToConcatenate.reverse();  
+  openParentheses--;  
+  if(openParentheses === 0) { 
+    finalString += currentStringToConcatenate; 
+    currentStringToConcatenate = ""; 
+  }
+}  
+
+if (character !== "(" && character !== ")" && openParentheses === 0) {
+  finalString += character; 
+}
+
+if (character !== "(" && character !== ")" && openParentheses > 0) {
+  currentStringToConcatenate += character; 
+}
+
+this logics still does not take account of from where currentStringToConcatenate should make each reverse 
+
+*/
+
+
+
 
 
 /* 
