@@ -12,45 +12,30 @@ function drawRace(indices, length) {
   let snowTrack = "";
 
   indices.forEach((index, i) => {
-    console.log(index); 
-    console.log(i); 
-
     const shiftsQuantity = indices.length - 1 - i;
-    console.log(shiftsQuantity); 
-
     snowTrack += SHIFT.repeat(shiftsQuantity); 
     
     if (index === 0) {
       snowTrack += SNOW.repeat(length); 
-      console.log(snowTrack); 
     }
     else if (index > 0) {
       snowTrack += SNOW.repeat(index);
-      console.log(snowTrack); 
       snowTrack += REINDEER;
-      console.log(snowTrack); 
       snowTrack += SNOW.repeat(length - index - 1);
-      console.log(snowTrack); 
     }
     else if (index < 0) {
       snowTrack += SNOW.repeat(length + index); 
-      console.log(snowTrack); 
       snowTrack += REINDEER; 
-      console.log(snowTrack);
       snowTrack += SNOW.repeat(- index - 1);
-      console.log(snowTrack);
     }
 
     snowTrack += " " + "/" + (i + 1);
-
     if (i !== indices.length - 1) {
-      console.log(i)
       snowTrack += BREAK; 
     }
 
   });
 
-  console.log(snowTrack)
   return snowTrack;  
 }
 
