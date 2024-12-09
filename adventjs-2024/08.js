@@ -12,27 +12,73 @@ function drawRace(indices, length) {
   let snowTrack = "";
 
   indices.forEach((index, i) => {
+    let lane = ""; 
     const shiftsQuantity = indices.length - 1 - i;
-    snowTrack += SHIFT.repeat(shiftsQuantity); 
     
-    if (index === 0) {
-      snowTrack += SNOW.repeat(length); 
-    }
-    else if (index > 0) {
-      snowTrack += SNOW.repeat(index);
-      snowTrack += REINDEER;
-      snowTrack += SNOW.repeat(length - index - 1);
-    }
-    else if (index < 0) {
-      snowTrack += SNOW.repeat(length + index); 
-      snowTrack += REINDEER; 
-      snowTrack += SNOW.repeat(- index - 1);
+    lane += SHIFT.repeat(shiftsQuantity);
+    // console.log(lane);
+    
+    lane += SNOW.repeat(length);
+    // console.log(lane);
+
+    if (index !== 0) {
+      // console.log(i)
+      let splitLane = lane.split("");
+      // console.log(lane);  
+      // console.log(i, splitLane); 
+      
+      if (index > 0) {
+        splitLane.splice(index + shiftsQuantity, 1, REINDEER);
+      } 
+      else {
+        splitLane.splice(index, 1, REINDEER);
+      }
+      // console.log(i, splitLane); 
+
+      lane = splitLane.join(""); 
+      // console.log(lane); 
     }
 
-    snowTrack += " " + "/" + (i + 1);
+    lane += " " + "/" + (i + 1);
     if (i !== indices.length - 1) {
-      snowTrack += BREAK; 
-    }
+      lane += BREAK; 
+    }; 
+
+    snowTrack += lane; 
+
+    // snowTrack += " " + "/" + (i + 1);
+    // if (i !== indices.length - 1) {
+    //   snowTrack += BREAK; 
+    // }    
+    
+    // else if (index < 0) {
+    //   splitLane = lane.split(""); 
+    //   console.log(splitLane); 
+    //   splitLane.splice(index, 1, REINDEER);
+
+    // }
+
+    
+    // snowTrack += SHIFT.repeat(shiftsQuantity); 
+    
+    // if (index === 0) {
+    //   snowTrack += SNOW.repeat(length); 
+    // }
+    // else if (index > 0) {
+    //   snowTrack += SNOW.repeat(index);
+    //   snowTrack += REINDEER;
+    //   snowTrack += SNOW.repeat(length - index - 1);
+    // }
+    // else if (index < 0) {
+    //   snowTrack += SNOW.repeat(length + index); 
+    //   snowTrack += REINDEER; 
+    //   snowTrack += SNOW.repeat(- index - 1);
+    // }
+
+    // snowTrack += " " + "/" + (i + 1);
+    // if (i !== indices.length - 1) {
+    //   snowTrack += BREAK; 
+    // }
 
   });
 
@@ -41,7 +87,7 @@ function drawRace(indices, length) {
 
 
 // TEST
-// console.log(drawRace([-1, 2, 1], 3));
+console.log(drawRace([1, -1], 3));
 
 
 // console.log(drawRace([0, 5, -3], 10));
