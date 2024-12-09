@@ -8,6 +8,36 @@ function drawRace(indices, length) {
   return ''
 }
 
+/* 
+LOGIC 
+let finalString = "";
+indices.forEach
+  const whiteSpaces = indices.length - 1
+  finalString += " ".repeat(whiteSpaces); 
+
+  if (number === 0) {
+    finalString += "~".repeat(length)
+  }
+  else if (number > 0) {
+    finalString += "~".repeat(number) + "r" + "~".repeat(length - number - 1)
+  } 
+  else if (number < 0) {
+    finalString += "~".repeat(length + number) + "r" + "~".repeat(- number - 1)
+  }
+  
+  if (index !== indices.length -1) {
+    finalString += " " + "/" + (index + 1) + "\n"; 
+  }
+
+  return finalString
+
+
+*/
+
+
+// TEST
+drawRace([2], 3);
+
 
 
 
