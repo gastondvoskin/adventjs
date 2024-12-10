@@ -9,6 +9,8 @@ function moveTrain(board, mov) {
   const SPACE = "."; 
   const CARRIAGE = "o"; 
 
+
+  // find engine 
   let engine_y;
   let engine_x;
 
@@ -21,9 +23,11 @@ function moveTrain(board, mov) {
       break;
     }
   }
-  console.log(engine_y, engine_x); 
+  // console.log(engine_y); 
+  // console.log(engine_x); 
 
 
+  // find element
   let element_y = engine_y; 
   let element_x = engine_x;
 
@@ -32,26 +36,28 @@ function moveTrain(board, mov) {
   else if (mov === "L") {element_x--}
   else if (mov === "R") {element_x++}
   
-  console.log(element_y); 
-  console.log(element_x); 
+  // console.log(element_y); 
+  // console.log(element_x); 
 
 
+  // get element value
   const elementString = board[element_y]; 
   if (!elementString) return "crash"; 
   const element = elementString.charAt(element_x); 
-  // const element = elementString.split("")[element_x]; 
-  console.log(element); 
+  // console.log(element); 
 
-  console.log(engine_y)
-  console.log(engine_x)
-  console.log(element_y)
-  console.log(element_x)
-  console.log(board[element_y].charAt(element_x))
+
+  // return based on the element value
+  // console.log(element === FRUIT); 
+  // console.log(element === SPACE); 
+  // console.log(element === CARRIAGE); 
+  // console.log(element === "");
 
   if (element === FRUIT) return "eat"
   else if (element === SPACE) return "none"
   else if (element === CARRIAGE || element === "") return "crash"; 
 }
+
 
 // TEST
 // console.log(moveTrain([
@@ -68,15 +74,15 @@ console.log(moveTrain([
   ".*o..", 
   "..o..", 
   "..o..", 
-], "L")); 
+], "R")); // none 
 
-console.log(moveTrain([
-  "......", 
-  "......", 
-  ".....*", 
-  "......", 
-  ".....@", 
-], "U")); // none
+// console.log(moveTrain([
+//   "......", 
+//   "......", 
+//   ".....*", 
+//   "......", 
+//   ".....@", 
+// ], "U")); // none
 
 // console.log(moveTrain([
 //   "...", 
