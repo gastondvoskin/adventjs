@@ -10,6 +10,15 @@ function moveTrain(board, mov) {
 
 
 /* 
+LOGIC
+find the coordinates of the engine (index of board, and index of string). 
+find the index of the element to compare. if U -> index of board - 1. if D -> index of board + 1. if L -> index of string - 1. if R -> index of string + 1. 
+find the element in the index of the element to compare. 
+if the element is a carriage or undefined, return "crash". if the element is a fruit, return "eat". if the element is space, return "none". 
+*/
+
+
+/* 
 EXERCISE
 The elves are playing with a magical train 🚂 that carries gifts. This train moves on a board represented by an array of strings.
 
