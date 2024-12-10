@@ -4,10 +4,87 @@
 // }
 
 function moveTrain(board, mov) {
-  // Code here
-  return 'none';
+  const ENGINE = "@"; 
+  const FRUIT  = "*"; 
+  const SPACE = "."; 
+  const CARRIAGE = "o"; 
+
+  let engine_y;
+  let engine_x;
+
+  for (let i = 0; i < board.length; i++) {
+    const string = board[i];
+    const index_x = string.indexOf(ENGINE); 
+    if (index_x !== -1) {
+      engine_y = i;
+      engine_x = index_x;
+      break;
+    }
+  }
+  console.log(engine_y, engine_x); 
+
+
+  let element_y = engine_y; 
+  let element_x = engine_x;
+
+  if (mov === "U") {element_y--}
+  else if (mov === "D") {element_y++}
+  else if (mov === "L") {element_x--}
+  else if (mov === "R") {element_x++}
+  
+  console.log(element_y); 
+  console.log(element_x); 
+
+
+  const elementString = board[element_y]; 
+  if (!elementString) return "crash"; 
+  const element = elementString.charAt(element_x); 
+  // const element = elementString.split("")[element_x]; 
+  console.log(element); 
+
+  console.log(engine_y)
+  console.log(engine_x)
+  console.log(element_y)
+  console.log(element_x)
+  console.log(board[element_y].charAt(element_x))
+
+  if (element === FRUIT) return "eat"
+  else if (element === SPACE) return "none"
+  else if (element === CARRIAGE || element === "") return "crash"; 
 }
 
+// TEST
+// console.log(moveTrain([
+//   ".....", 
+//   "..*..", 
+//   "..@..", 
+//   "..o..", 
+//   "..o..", 
+// ], "R")); 
+
+console.log(moveTrain([
+  "..@..", 
+  "..o..", 
+  ".*o..", 
+  "..o..", 
+  "..o..", 
+], "L")); 
+
+console.log(moveTrain([
+  "......", 
+  "......", 
+  ".....*", 
+  "......", 
+  ".....@", 
+], "U")); // none
+
+// console.log(moveTrain([
+//   "...", 
+//   "..*", 
+//   "..@", 
+// ], "U")); 
+
+// console.log("abc".indexOf(""));
 
 /* 
 LOGIC
