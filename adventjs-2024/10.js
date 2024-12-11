@@ -9,6 +9,34 @@ function compile(instructions) {
 }
 
 
+/* 
+LOGIC
+
+let values = {}; // C: 0 -> C: 1
+
+iterate instructions. 
+const [action, x, y] = element.split(" "); 
+if (action === "MOV" && x can be parsed to Number) {
+  values[y] = x; 
+}
+else if (action === "MOV" && x cannot be parsed to Number) {
+  values[y] = values[x];
+}
+else if (action === "INC") {
+  values[y]++;
+}
+else if (action === "DEC") {
+  values[y]--;
+}
+  else if (action === "JMP" && x === 0) {
+  i = y;
+}
+
+return values.A;
+
+*/
+
+
 // EXERCISE
 // The elf programmers are creating a small magical assembler to control the machines in Santa Claus's workshop.
 
