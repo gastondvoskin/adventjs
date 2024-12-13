@@ -6,9 +6,8 @@
 function moveTrain(board, mov) {
   const ENGINE = "@"; 
   const FRUIT  = "*"; 
-  const SPACE = "."; 
+  // const SPACE = "."; 
   const CARRIAGE = "o"; 
-
 
   // find engine 
   let engine_y;
@@ -23,9 +22,6 @@ function moveTrain(board, mov) {
       break;
     }
   }
-  // console.log(engine_y); 
-  // console.log(engine_x); 
-
 
   // find element
   let element_y = engine_y; 
@@ -35,10 +31,6 @@ function moveTrain(board, mov) {
   else if (mov === "D") {element_y++}
   else if (mov === "L") {element_x--}
   else if (mov === "R") {element_x++}
-  
-  // console.log(element_y); 
-  // console.log(element_x); 
-
 
   // get element value
   const elementString = board[element_y]; 
@@ -46,16 +38,10 @@ function moveTrain(board, mov) {
   const element = elementString.charAt(element_x); 
   // console.log(element); 
 
-
-  // return based on the element value
-  // console.log(element === FRUIT); 
-  // console.log(element === SPACE); 
-  // console.log(element === CARRIAGE); 
-  // console.log(element === "");
-
   if (element === FRUIT) return "eat"
-  else if (element === SPACE) return "none"
-  else if (element === CARRIAGE || element === "") return "crash"; 
+  if (element === CARRIAGE || element === "") return "crash"; 
+  // if (element === SPACE) return "none"
+  return "none";
 }
 
 
