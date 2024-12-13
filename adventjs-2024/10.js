@@ -4,31 +4,48 @@
 // }
 
 function compile(instructions) {
-  const MOV = "MOV";
-  const INC = "INC";
-  const DEC = "DEC";
-  const JMP = "JMP";
+
+  let aIsInitialized = false; 
+  instructions.forEach(instruction => {
+    if (instruction.split("").includes("A")) {
+      aIsInitialized = true;
+    }
+  });
+  if (!aIsInitialized) return undefined;
+
+  const values = {
+    A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0, H: 0, I: 0, J: 0,
+    K: 0, L: 0, M: 0, N: 0, O: 0, P: 0, Q: 0, R: 0, S: 0, T: 0,
+    U: 0, V: 0, W: 0, X: 0, Y: 0, Z: 0
+  };
   
-  let values = {}; 
+  // let valuesBeforeRepetition = {};
+  // let repetitionIndex; 
   
   for (let i = 0; i < instructions.length; i++) {
     const instruction = instructions[i];
     const [action, x, y] = instruction.split(" "); 
     
-    if (action === MOV) {
+    if (action === "MOV") {
       const xIsNumber = !isNaN(Number(x)); 
-      values[y] = xIsNumber ? Number(x) : Number(values[x]); 
+      values[y] = xIsNumber ? Number(x) : values[x]; 
     }
-    else if (action === INC) {
-      values[x] = !values[x] ? 0 + 1 : values[x] + 1;
+    else if (action === "INC") {
+      values[x] = (values[x] || 0) + 1;
     }
-    else if (action === DEC) {
-      values[x] = !values[x] ? 0 - 1 : values[x] - 1;
+    else if (action === "DEC") {
+      values[x] = (values[x] || 0) - 1;
     }
-    else if (action === JMP && values[x] === 0) {
-      i = y - 1;
+    else if (action === "JMP" && values[x] === 0) {
+      // if (Number(y) === repetitionIndex && 
+      //   JSON.stringify(values) === JSON.stringify(valuesBeforeRepetition)) {
+      //     throw new Error("repeating iteration, infinite loop");
+      // }
+      // repetitionIndex = Number(y); 
+      // valuesBeforeRepetition = {...values};
+      i = Number(y) - 1;
     }
-    console.log(values)
+    // console.log(values);
   }
 
   return values.A; 
@@ -36,13 +53,18 @@ function compile(instructions) {
 
 
 // TEST 
+console.log(compile(["MOV 5 A", "MOV A B"])); 
+// console.log(compile(["MOV 0 A", "JMP A 0"])); 
+// console.log(compile(["MOV 0 A", "INC A"])); 
+// console.log(compile(["INC A", "INC A", "DEC A", "MOV A B",])); 
+// console.log(compile(["INC C", "DEC B", "MOV C Y", "INC Y",])); 
 // console.log(compile(["MOV -1 C", "INC C", "DEC C", "JMP C 0" ]));  
 // console.log(compile(["JMP C 0" ]));  
 // console.log(compile(["INC A" ])); 
-console.log(compile(["MOV 0 A", "INC A"])); 
-console.log(compile(["INC A", "INC A", "DEC A", "MOV A B"])); 
-console.log(compile(["MOV 5 B", "DEC B", "MOV B A", "INC A"])); 
-console.log(compile(["MOV 2 X", "DEC X", "JMP X 1", "MOV X A"])); 
+// console.log(compile(["MOV 0 A", "INC A"])); 
+// console.log(compile(["INC A", "INC A", "DEC A", "MOV A B"])); 
+// console.log(compile(["MOV 5 B", "DEC B", "MOV B A", "INC A"])); 
+// console.log(compile(["MOV 2 X", "DEC X", "JMP X 1", "MOV X A"])); 
 
 
 // const instructions = [
@@ -64,35 +86,6 @@ console.log(compile(["MOV 2 X", "DEC X", "JMP X 1", "MOV X A"]));
 //  3: MOV C A  -> Copies register C to A. Now A is 1
 //  4: INC A    -> The register A becomes 2
 
-
-
-
-/* 
-LOGIC
-
-let values = {}; // C: 0 -> C: 1
-
-iterate instructions. 
-const [action, x, y] = element.split(" "); 
-if (action === "MOV" && x can be parsed to Number) {
-  values[y] = x; 
-}
-else if (action === "MOV" && x cannot be parsed to Number) {
-  values[y] = values[x];
-}
-else if (action === "INC") {
-  values[y]++;
-}
-else if (action === "DEC") {
-  values[y]--;
-}
-  else if (action === "JMP" && x === 0) {
-  i = y;
-}
-
-return values.A;
-
-*/
 
 
 // EXERCISE
