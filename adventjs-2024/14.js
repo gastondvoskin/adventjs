@@ -8,25 +8,20 @@ function minMovesToStables(reindeer, stables) {
   reindeer.sort((a, b) => a - b); 
   stables.sort((a, b) => a - b); 
 
-  console.log(reindeer); 
-  console.log(stables);
-  
   const minMoves = reindeer.reduce((accumulator, currentValue, currentIndex) => {
     const currentStable = stables[currentIndex]; 
     let distance = currentValue - currentStable; 
     if (distance < 0) {distance = - distance};
-    console.log(distance); 
-    console.log(accumulator); 
-    console.log(currentValue); 
-    console.log(currentIndex); 
     return accumulator + distance; 
   }, 0); 
 
-  console.log(minMoves); 
   return minMoves; 
 }
 
-minMovesToStables([3, 6], [1, 7]); 
+// TEST
+console.log(minMovesToStables([3, 7], [1, 7])); // 2
+console.log(minMovesToStables([2, 6, 9], [3, 8, 5])) // 3
+console.log(minMovesToStables([1, 1, 3], [1, 8, 4])) // 8
 
 /* 
 LOGIC. 
