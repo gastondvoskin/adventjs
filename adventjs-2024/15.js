@@ -39,27 +39,32 @@ function drawTable(data) {
   
 
   // FIRST LINE
-  const firstLine = 
-    PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + 
-    PLUS + HYPHEN.repeat(secondValueMaxLength + 2) + PLUS; 
+  console.log(secondKey);
+  console.log(secondKey !== "undefined");
+  let firstLine = PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + PLUS 
+  if (secondKey !== "undefined") {
+    firstLine += HYPHEN.repeat(secondValueMaxLength + 2) + PLUS;
+  }
   console.log(firstLine); 
     
     // SECOND LINE
-  const secondLine = 
-    VERTICAL + SPACE + capitalizeString(firstKey) + 
-    SPACE.repeat(firstValueMaxLength - firstKey.length + 1) + 
-    VERTICAL + SPACE + capitalizeString(secondKey) + 
-    SPACE.repeat(secondValueMaxLength - secondKey.length + 1) + VERTICAL; 
+  let secondLine = VERTICAL + SPACE + capitalizeString(firstKey) + SPACE.repeat(firstValueMaxLength - firstKey.length + 1) + VERTICAL;
+  console.log(secondLine); 
+  if (secondKey !== "undefined") {
+    secondLine += SPACE + capitalizeString(secondKey) + SPACE.repeat(secondValueMaxLength - secondKey.length + 1) + VERTICAL;  
+  } 
   console.log(secondLine); 
     
   // CONTENT 
   let content = ""; 
   data.forEach(element => {
-    const newLine = 
-      VERTICAL + SPACE + String(element[firstKey]) +
-      SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) + 
-      VERTICAL + SPACE + String(element[secondKey]) +
-      SPACE.repeat(secondValueMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
+    let newLine = VERTICAL + SPACE + String(element[firstKey]) + SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) + VERTICAL 
+    if (secondKey !== "undefined") {
+      newLine += SPACE + String(element[secondKey]) + SPACE.repeat(secondValueMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
+    } 
+    else {
+      newLine += BREAK;
+    }
     content += newLine;
   }); 
   console.log(content);
@@ -72,8 +77,11 @@ function drawTable(data) {
 
 // TEST
 console.log(drawTable([
-  { k1: "", k2: "" },
+  { k1: "a", k2: "bbb" },
 ]));
+// console.log(drawTable([
+//   { k1: "", k2: "" },
+// ]));
 
 // console.log(drawTable([
 //   { key1: "aaa", key2: "" },
