@@ -3,82 +3,104 @@
 //   return ''
 // }
 
-
 function drawTable(data) {
-
   // CAPITALIZE HELPER FUNCTION
   const capitalizeString = (string) => {
-    const capitalized =
-      string.charAt(0).toUpperCase()
-      + string.slice(1)
-    return capitalized; 
-  }
+    const capitalized = string.charAt(0).toUpperCase() + string.slice(1);
+    return capitalized;
+  };
 
   // SYMBOLS
-  const PLUS = "+"; 
-  const HYPHEN = "-"; 
-  const BREAK = "\n"; 
-  const VERTICAL = "|"; 
-  const SPACE = " "; 
-  
+  const PLUS = "+";
+  const HYPHEN = "-";
+  const BREAK = "\n";
+  const VERTICAL = "|";
+  const SPACE = " ";
 
   // KEYS
   let [firstKey, secondKey] = Object.keys(data[0]);
-  firstKey = String(firstKey); 
-  secondKey = String(secondKey); 
-
+  firstKey = String(firstKey);
+  secondKey = String(secondKey);
 
   // MAX LENGTHS (used for columns widths)
-  let firstValueMaxLength = firstKey.length; 
-  let secondValueMaxLength = secondKey.length; 
+  let firstValueMaxLength = firstKey.length;
+  let secondValueMaxLength = secondKey.length;
 
-  data.forEach(element => {
-    firstValueMaxLength = Math.max(firstValueMaxLength, String(element[firstKey]).length); 
-    secondValueMaxLength = Math.max(secondValueMaxLength, String(element[secondKey]).length); 
+  data.forEach((element) => {
+    firstValueMaxLength = Math.max(
+      firstValueMaxLength,
+      String(element[firstKey]).length
+    );
+    secondValueMaxLength = Math.max(
+      secondValueMaxLength,
+      String(element[secondKey]).length
+    );
   });
-  
 
   // FIRST LINE
-  console.log(secondKey);
-  console.log(secondKey !== "undefined");
-  let firstLine = PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + PLUS 
+  let firstLine = PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + PLUS;
   if (secondKey !== "undefined") {
     firstLine += HYPHEN.repeat(secondValueMaxLength + 2) + PLUS;
   }
-  console.log(firstLine); 
-    
-    // SECOND LINE
-  let secondLine = VERTICAL + SPACE + capitalizeString(firstKey) + SPACE.repeat(firstValueMaxLength - firstKey.length + 1) + VERTICAL;
-  console.log(secondLine); 
+  // console.log(firstLine);
+
+  // SECOND LINE
+  let secondLine =
+    VERTICAL +
+    SPACE +
+    capitalizeString(firstKey) +
+    SPACE.repeat(firstValueMaxLength - firstKey.length + 1) +
+    VERTICAL;
   if (secondKey !== "undefined") {
-    secondLine += SPACE + capitalizeString(secondKey) + SPACE.repeat(secondValueMaxLength - secondKey.length + 1) + VERTICAL;  
-  } 
-  console.log(secondLine); 
-    
-  // CONTENT 
-  let content = ""; 
-  data.forEach(element => {
-    let newLine = VERTICAL + SPACE + String(element[firstKey]) + SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) + VERTICAL 
+    secondLine +=
+      SPACE +
+      capitalizeString(secondKey) +
+      SPACE.repeat(secondValueMaxLength - secondKey.length + 1) +
+      VERTICAL;
+  }
+  // console.log(secondLine);
+
+  // CONTENT
+  let content = "";
+  data.forEach((element) => {
+    let newLine =
+      VERTICAL +
+      SPACE +
+      String(element[firstKey]) +
+      SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) +
+      VERTICAL;
     if (secondKey !== "undefined") {
-      newLine += SPACE + String(element[secondKey]) + SPACE.repeat(secondValueMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
-    } 
-    else {
+      newLine +=
+        SPACE +
+        String(element[secondKey]) +
+        SPACE.repeat(
+          secondValueMaxLength - String(element[secondKey]).length + 1
+        ) +
+        VERTICAL +
+        BREAK;
+    } else {
       newLine += BREAK;
     }
     content += newLine;
-  }); 
-  console.log(content);
+  });
+  // console.log(content);
 
   // FINAL TABLE
-  const table = firstLine + BREAK + secondLine + BREAK + firstLine + BREAK + content + firstLine; 
-  console.log(table); 
-  return table; 
+  const table =
+    firstLine +
+    BREAK +
+    secondLine +
+    BREAK +
+    firstLine +
+    BREAK +
+    content +
+    firstLine;
+  // console.log(table);
+  return table;
 }
 
 // TEST
-console.log(drawTable([
-  { k1: "a", k2: "bbb" },
-]));
+console.log(drawTable([{ k1: "a", k2: "bbb" }]));
 // console.log(drawTable([
 //   { k1: "", k2: "" },
 // ]));
@@ -118,11 +140,6 @@ table = firstLine + "\n" + secondLine + firstLine + "\n" + content + firstLine;
 return table;  
 
 */
-
-
-
-
-
 
 /* 
 EXERCISE 
@@ -167,17 +184,16 @@ drawTable([
 // +----------+----------+
  */
 
-
 // data.forEach(element => {
-//   // firstValueMaxLength = Math.max(element[firstKey].length, firstValueMaxLength); 
-//   // secondValueMaxLength = Math.max(element[secondKey].length, secondValueMaxLength); 
-//   const firstValueLength = element[firstKey].length; 
+//   // firstValueMaxLength = Math.max(element[firstKey].length, firstValueMaxLength);
+//   // secondValueMaxLength = Math.max(element[secondKey].length, secondValueMaxLength);
+//   const firstValueLength = element[firstKey].length;
 //   if(firstValueLength > firstValueMaxLength) {
-//     firstValueMaxLength = firstValueLength; 
+//     firstValueMaxLength = firstValueLength;
 //   }
-//   const secondValueLength = element[firstKey].length; 
+//   const secondValueLength = element[firstKey].length;
 //   if(secondValueLength > secondValueMaxLength) {
-//     secondValueMaxLength = secondValueLength; 
+//     secondValueMaxLength = secondValueLength;
 //   }
 // });
-// console.log(firstValueMaxLength); 
+// console.log(firstValueMaxLength);
