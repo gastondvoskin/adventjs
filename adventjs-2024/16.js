@@ -5,51 +5,41 @@
 
 function removeSnow(s) {
   let snowArray = s.split(""); 
-  console.log(snowArray);
   
   for (let i = 0; i < snowArray.length - 1; i++) {
-    console.log(i)
     const currentPile = snowArray[i];
     const nextPile = snowArray[i + 1];
-    console.log(currentPile); 
-    console.log(nextPile); 
-    console.log(i, currentPile === nextPile); 
 
     if (currentPile === nextPile) {
-      console.log(i); 
       snowArray.splice(i, 2); 
-      console.log(snowArray); 
       i = i - 2;
     }
   }
-  console.log(snowArray); 
+
   const finalPath = snowArray.join(""); 
-  console.log(finalPath); 
   return finalPath; 
 }
 
 // TEST 
-// console.log(removeSnow("abccb"))
-//          abb
-//          01234
+console.log(removeSnow("abccb"))
+//                       i 01234
+//                         abb
+//                       i  1
+//                         a
+//                       i 0
 
-console.log(removeSnow('zxxzoz')) // -> "oz"
+// console.log(removeSnow('zxxzoz')) // -> "oz"
 // 1. Remove "xx", resulting in "zzoz"
 // 2. Remove "zz", resulting in "oz"
 
-console.log(removeSnow('abcdd')) // -> "abc"
+// console.log(removeSnow('abcdd')) // -> "abc"
 // 1. Remove "dd", resulting in "abc"
 
-console.log(removeSnow('zzz')) // -> "z"
+// console.log(removeSnow('zzz')) // -> "z"
 // 1. Remove "zz", resulting in "z"
 
-console.log(removeSnow('a')) // -> "a"
+// console.log(removeSnow('a')) // -> "a"
 // No duplicate piles
-
-/* 
-Logic iterate s. 
-if currentElement === nextElemeng -> remove both elements and i = i - 2;
-*/
 
 
 
