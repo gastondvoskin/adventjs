@@ -6,6 +6,7 @@
 
 function drawTable(data) {
 
+  // CAPITALIZE HELPER FUNCTION
   const capitalizeString = (string) => {
     const capitalized =
       string.charAt(0).toUpperCase()
@@ -13,29 +14,21 @@ function drawTable(data) {
     return capitalized; 
   }
 
-  // console.log(capitalizeString("hola"));
-  // console.log(capitalizeString(String(1)));
-  // console.log(capitalizeString(String(true)));
-  
+  // SYMBOLS
   const PLUS = "+"; 
-  const HYPEN = "-"; 
+  const HYPHEN = "-"; 
   const BREAK = "\n"; 
-  const SEPARATOR = "|"; 
+  const VERTICAL = "|"; 
   const SPACE = " "; 
   
+
+  // KEYS
   let [firstKey, secondKey] = Object.keys(data[0]);
   firstKey = String(firstKey); 
   secondKey = String(secondKey); 
 
-  // if (!firstKey) throw new Error("aaa"); 
-  // if (!secondKey) throw new Error("bbb"); 
 
-  // data.forEach(element => {
-  //   if (!element[firstKey]) throw new Error("wrong data lala"); 
-  //   if (!element[secondKey]) throw new Error("wrong data lolo"); 
-  // })
-
-
+  // MAX LENGTHS (used for columns widths)
   let firstElementMaxLength = firstKey.length; 
   let secondElementMaxLength = secondKey.length; 
 
@@ -48,42 +41,47 @@ function drawTable(data) {
     }
   });
   
+
+  // FIRST LINE
   const firstLine = 
-    PLUS + HYPEN.repeat(firstElementMaxLength + 2) + 
-    PLUS + HYPEN.repeat(secondElementMaxLength + 2) + PLUS;  
-  // console.log(firstLine); 
-
+    PLUS + HYPHEN.repeat(firstElementMaxLength + 2) + 
+    PLUS + HYPHEN.repeat(secondElementMaxLength + 2) + PLUS; 
+  console.log(firstLine); 
+    
+    // SECOND LINE
   const secondLine = 
-    SEPARATOR + SPACE + capitalizeString(firstKey) + 
+    VERTICAL + SPACE + capitalizeString(firstKey) + 
     SPACE.repeat(firstElementMaxLength - firstKey.length + 1) + 
-    SEPARATOR + SPACE + capitalizeString(secondKey) + 
-    SPACE.repeat(secondElementMaxLength - secondKey.length + 1) + SEPARATOR; 
-  // console.log(secondLine); 
-  
-  let table = firstLine + BREAK + secondLine + BREAK + firstLine + BREAK; 
-
+    VERTICAL + SPACE + capitalizeString(secondKey) + 
+    SPACE.repeat(secondElementMaxLength - secondKey.length + 1) + VERTICAL; 
+  console.log(secondLine); 
+    
+  // CONTENT 
   let content = ""; 
   data.forEach(element => {
-    // console.log(element[firstKey])
     const newLine = 
-      SEPARATOR + SPACE + element[firstKey] +
+      VERTICAL + SPACE + String(element[firstKey]) +
       SPACE.repeat(firstElementMaxLength - String(element[firstKey]).length + 1) + 
-      SEPARATOR + SPACE + element[secondKey] +
-      SPACE.repeat(secondElementMaxLength - String(element[secondKey]).length + 1) + SEPARATOR + BREAK
-    
+      VERTICAL + SPACE + String(element[secondKey]) +
+      SPACE.repeat(secondElementMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
     content += newLine;
-  })
+  }); 
+  console.log(content);
 
-  // console.log(content)
-  table += content + firstLine; 
-  // console.log(table); 
+  // FINAL TABLE
+  const table = firstLine + BREAK + secondLine + BREAK + firstLine + BREAK + content + firstLine; 
+  console.log(table); 
   return table; 
 }
 
 // TEST
 console.log(drawTable([
-  { key1: "aaa", key2: "" },
+  { k1: "", k2: "" },
 ]));
+
+// console.log(drawTable([
+//   { key1: "aaa", key2: "" },
+// ]));
 // console.log(drawTable([
 //   { gift: 'Doll', quantity: 10 },
 //   { gift: 'Book', quantity: 5 },
@@ -164,3 +162,18 @@ drawTable([
 // | Music CD | 1        |
 // +----------+----------+
  */
+
+
+// data.forEach(element => {
+//   // firstValueMaxLength = Math.max(element[firstKey].length, firstValueMaxLength); 
+//   // secondValueMaxLength = Math.max(element[secondKey].length, secondValueMaxLength); 
+//   const firstValueLength = element[firstKey].length; 
+//   if(firstValueLength > firstValueMaxLength) {
+//     firstValueMaxLength = firstValueLength; 
+//   }
+//   const secondValueLength = element[firstKey].length; 
+//   if(secondValueLength > secondValueMaxLength) {
+//     secondValueMaxLength = secondValueLength; 
+//   }
+// });
+// console.log(firstValueMaxLength); 
