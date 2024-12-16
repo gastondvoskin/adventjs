@@ -184,16 +184,4 @@ drawTable([
 // +----------+----------+
  */
 
-// data.forEach(element => {
-//   // firstValueMaxLength = Math.max(element[firstKey].length, firstValueMaxLength);
-//   // secondValueMaxLength = Math.max(element[secondKey].length, secondValueMaxLength);
-//   const firstValueLength = element[firstKey].length;
-//   if(firstValueLength > firstValueMaxLength) {
-//     firstValueMaxLength = firstValueLength;
-//   }
-//   const secondValueLength = element[firstKey].length;
-//   if(secondValueLength > secondValueMaxLength) {
-//     secondValueMaxLength = secondValueLength;
-//   }
-// });
-// console.log(firstValueMaxLength);
+
