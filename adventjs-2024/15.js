@@ -29,31 +29,27 @@ function drawTable(data) {
 
 
   // MAX LENGTHS (used for columns widths)
-  let firstElementMaxLength = firstKey.length; 
-  let secondElementMaxLength = secondKey.length; 
+  let firstValueMaxLength = firstKey.length; 
+  let secondValueMaxLength = secondKey.length; 
 
   data.forEach(element => {
-    if(element[firstKey].length > firstElementMaxLength) {
-      firstElementMaxLength = element[firstKey].length; 
-    }
-    if(element[secondKey].length > secondElementMaxLength) {
-      secondElementMaxLength = element[secondKey].length; 
-    }
+    firstValueMaxLength = Math.max(firstValueMaxLength, String(element[firstKey]).length); 
+    secondValueMaxLength = Math.max(secondValueMaxLength, String(element[secondKey]).length); 
   });
   
 
   // FIRST LINE
   const firstLine = 
-    PLUS + HYPHEN.repeat(firstElementMaxLength + 2) + 
-    PLUS + HYPHEN.repeat(secondElementMaxLength + 2) + PLUS; 
+    PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + 
+    PLUS + HYPHEN.repeat(secondValueMaxLength + 2) + PLUS; 
   console.log(firstLine); 
     
     // SECOND LINE
   const secondLine = 
     VERTICAL + SPACE + capitalizeString(firstKey) + 
-    SPACE.repeat(firstElementMaxLength - firstKey.length + 1) + 
+    SPACE.repeat(firstValueMaxLength - firstKey.length + 1) + 
     VERTICAL + SPACE + capitalizeString(secondKey) + 
-    SPACE.repeat(secondElementMaxLength - secondKey.length + 1) + VERTICAL; 
+    SPACE.repeat(secondValueMaxLength - secondKey.length + 1) + VERTICAL; 
   console.log(secondLine); 
     
   // CONTENT 
@@ -61,9 +57,9 @@ function drawTable(data) {
   data.forEach(element => {
     const newLine = 
       VERTICAL + SPACE + String(element[firstKey]) +
-      SPACE.repeat(firstElementMaxLength - String(element[firstKey]).length + 1) + 
+      SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) + 
       VERTICAL + SPACE + String(element[secondKey]) +
-      SPACE.repeat(secondElementMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
+      SPACE.repeat(secondValueMaxLength - String(element[secondKey]).length + 1) + VERTICAL + BREAK
     content += newLine;
   }); 
   console.log(content);
