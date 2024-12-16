@@ -3,87 +3,111 @@
 //   return ''
 // }
 
-
 function drawTable(data) {
-
+  // CAPITALIZE HELPER FUNCTION
   const capitalizeString = (string) => {
-    const capitalized =
-      string.charAt(0).toUpperCase()
-      + string.slice(1)
-    return capitalized; 
-  }
+    const capitalized = string.charAt(0).toUpperCase() + string.slice(1);
+    return capitalized;
+  };
 
-  // console.log(capitalizeString("hola"));
-  // console.log(capitalizeString(String(1)));
-  // console.log(capitalizeString(String(true)));
-  
-  const PLUS = "+"; 
-  const HYPEN = "-"; 
-  const BREAK = "\n"; 
-  const SEPARATOR = "|"; 
-  const SPACE = " "; 
-  
+  // SYMBOLS
+  const PLUS = "+";
+  const HYPHEN = "-";
+  const BREAK = "\n";
+  const VERTICAL = "|";
+  const SPACE = " ";
+
+  // KEYS
   let [firstKey, secondKey] = Object.keys(data[0]);
-  firstKey = String(firstKey); 
-  secondKey = String(secondKey); 
+  firstKey = String(firstKey);
+  secondKey = String(secondKey);
 
-  // if (!firstKey) throw new Error("aaa"); 
-  // if (!secondKey) throw new Error("bbb"); 
+  // MAX LENGTHS (used for columns widths)
+  let firstValueMaxLength = firstKey.length;
+  let secondValueMaxLength = secondKey.length;
 
-  // data.forEach(element => {
-  //   if (!element[firstKey]) throw new Error("wrong data lala"); 
-  //   if (!element[secondKey]) throw new Error("wrong data lolo"); 
-  // })
-
-
-  let firstElementMaxLength = firstKey.length; 
-  let secondElementMaxLength = secondKey.length; 
-
-  data.forEach(element => {
-    if(element[firstKey].length > firstElementMaxLength) {
-      firstElementMaxLength = element[firstKey].length; 
-    }
-    if(element[secondKey].length > secondElementMaxLength) {
-      secondElementMaxLength = element[secondKey].length; 
-    }
+  data.forEach((element) => {
+    firstValueMaxLength = Math.max(
+      firstValueMaxLength,
+      String(element[firstKey]).length
+    );
+    secondValueMaxLength = Math.max(
+      secondValueMaxLength,
+      String(element[secondKey]).length
+    );
   });
-  
-  const firstLine = 
-    PLUS + HYPEN.repeat(firstElementMaxLength + 2) + 
-    PLUS + HYPEN.repeat(secondElementMaxLength + 2) + PLUS;  
-  // console.log(firstLine); 
 
-  const secondLine = 
-    SEPARATOR + SPACE + capitalizeString(firstKey) + 
-    SPACE.repeat(firstElementMaxLength - firstKey.length + 1) + 
-    SEPARATOR + SPACE + capitalizeString(secondKey) + 
-    SPACE.repeat(secondElementMaxLength - secondKey.length + 1) + SEPARATOR; 
-  // console.log(secondLine); 
-  
-  let table = firstLine + BREAK + secondLine + BREAK + firstLine + BREAK; 
+  // FIRST LINE
+  let firstLine = PLUS + HYPHEN.repeat(firstValueMaxLength + 2) + PLUS;
+  if (secondKey !== "undefined") {
+    firstLine += HYPHEN.repeat(secondValueMaxLength + 2) + PLUS;
+  }
+  // console.log(firstLine);
 
-  let content = ""; 
-  data.forEach(element => {
-    // console.log(element[firstKey])
-    const newLine = 
-      SEPARATOR + SPACE + element[firstKey] +
-      SPACE.repeat(firstElementMaxLength - String(element[firstKey]).length + 1) + 
-      SEPARATOR + SPACE + element[secondKey] +
-      SPACE.repeat(secondElementMaxLength - String(element[secondKey]).length + 1) + SEPARATOR + BREAK
-    
+  // SECOND LINE
+  let secondLine =
+    VERTICAL +
+    SPACE +
+    capitalizeString(firstKey) +
+    SPACE.repeat(firstValueMaxLength - firstKey.length + 1) +
+    VERTICAL;
+  if (secondKey !== "undefined") {
+    secondLine +=
+      SPACE +
+      capitalizeString(secondKey) +
+      SPACE.repeat(secondValueMaxLength - secondKey.length + 1) +
+      VERTICAL;
+  }
+  // console.log(secondLine);
+
+  // CONTENT
+  let content = "";
+  data.forEach((element) => {
+    let newLine =
+      VERTICAL +
+      SPACE +
+      String(element[firstKey]) +
+      SPACE.repeat(firstValueMaxLength - String(element[firstKey]).length + 1) +
+      VERTICAL;
+    if (secondKey !== "undefined") {
+      newLine +=
+        SPACE +
+        String(element[secondKey]) +
+        SPACE.repeat(
+          secondValueMaxLength - String(element[secondKey]).length + 1
+        ) +
+        VERTICAL +
+        BREAK;
+    } else {
+      newLine += BREAK;
+    }
     content += newLine;
-  })
+  });
+  // console.log(content);
 
-  // console.log(content)
-  table += content + firstLine; 
-  // console.log(table); 
-  return table; 
+  // FINAL TABLE
+  const table =
+    firstLine +
+    BREAK +
+    secondLine +
+    BREAK +
+    firstLine +
+    BREAK +
+    content +
+    firstLine;
+  // console.log(table);
+  return table;
 }
 
 // TEST
-console.log(drawTable([
-  { key1: "aaa", key2: "" },
-]));
+console.log(drawTable([{ k1: "a", k2: "bbb" }]));
+// console.log(drawTable([
+//   { k1: "", k2: "" },
+// ]));
+
+// console.log(drawTable([
+//   { key1: "aaa", key2: "" },
+// ]));
 // console.log(drawTable([
 //   { gift: 'Doll', quantity: 10 },
 //   { gift: 'Book', quantity: 5 },
@@ -116,11 +140,6 @@ table = firstLine + "\n" + secondLine + firstLine + "\n" + content + firstLine;
 return table;  
 
 */
-
-
-
-
-
 
 /* 
 EXERCISE 
@@ -164,3 +183,5 @@ drawTable([
 // | Music CD | 1        |
 // +----------+----------+
  */
+
+
