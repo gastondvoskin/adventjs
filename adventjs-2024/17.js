@@ -4,11 +4,94 @@
 // }
 
 function detectBombs(grid) {
-  // Code here
-  return []
+  let finalGrid = []; 
+
+  for (let i = 0; i < grid.length; i++) {
+    const row = grid[i];
+    finalGrid.push([...row])
+  }
+  
+  
+  for (let i = 0; i < grid.length; i++) {
+    const row = grid[i];
+    // console.log(i, finalGrid); 
+    for (let j = 0; j < row.length; j++) {
+      const element = row[j];
+      // console.log(i, row, j, element); 
+      // finalGrid[i][j] = 0; 
+      console.log(finalGrid); 
+      // console.log(grid); 
+
+      const up = !!(grid[i - 1] && grid[i - 1][j]) ? 1 : 0; 
+      const down = !!(grid[i + 1] && grid[i + 1][j]) ? 1 : 0; 
+      const left = !!(grid[i][j - 1]) ? 1 : 0; 
+      const right = !!(grid[i][j + 1]) ? 1 : 0; 
+
+      console.log(up, down, left, right); 
+
+      const upLeft = !!(grid[i - 1] && grid[i - 1][j - 1]) ? 1 : 0; 
+      const upRight = !!(grid[i - 1] && grid[i - 1][j + 1]) ? 1 : 0; 
+      const downLeft = !!(grid[i + 1] && grid[i + 1][j - 1]) ? 1 : 0; 
+      const downRight = !!(grid[i + 1] && grid[i + 1][j + 1]) ? 1 : 0; 
+      console.log(upLeft, upRight, downLeft, downRight); 
+      
+      finalGrid[i][j] = up + down + left + right + upLeft + upRight + downLeft + downRight;
+      console.log(finalGrid[i][j]) 
+    }
+  }
+  console.log(grid); 
+  console.log(finalGrid); 
+
+  return finalGrid; 
 }
 
 
+console.log(detectBombs([
+  [true, false, false],
+  [false, true, false],
+  [false, false, false]
+]));
+// [
+//   [1, 2, 1],
+//   [2, 1, 1],
+//   [1, 1, 1]
+// ]
+
+console.log(detectBombs([
+  [true, false],
+  [false, false]
+])) 
+// [
+//   [0, 1],
+//   [1, 1]
+// ]
+
+
+console.log(detectBombs([
+  [true, true],
+  [false, false],
+  [true, true]
+]))
+
+// [
+//   [1, 1],
+//   [4, 4],
+//   [1, 1]
+// ]
+
+
+
+/* 
+LOGIC
+map grid to an array of array of 0. 
+iterate grid. iterate row. 
+let current
+if (current) {
+  if right === true || right === false {
+    right++
+  }
+}
+*/
 
 
 
@@ -40,15 +123,5 @@ detectBombs([
 //   [1, 1]
 // ]
 
-detectBombs([
-  [true, true],
-  [false, false],
-  [true, true]
-])
 
-// [
-//   [1, 1],
-//   [4, 4],
-//   [1, 1]
-// ]
 */
