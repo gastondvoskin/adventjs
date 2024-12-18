@@ -5,46 +5,40 @@
 
 function findInAgenda(agenda, phone) {
   const agendaArray = agenda.split("\n"); 
-  console.log(agendaArray); 
   
   let matchedChildArray = []; 
-  // let matchedChildIndex; 
-  // let matchedChildPhoneLength; 
   let matchedNumbers = 0; 
 
   for (let i = 0; i < agendaArray.length; i++) {
     const child = agendaArray[i];
-    console.log(child); 
-    // get the phone number: check with the tests if finding the "+" is enough or if it is required to also check the length and all the format of the number. 
-    
+    // console.log(child); 
+
     // find the "+"
     const childArray = child.split(""); 
-    console.log(childArray)
+
     for (let j = 0; j < childArray.length; j++) {
       const character = childArray[j];
-      console.log(character); 
+      // console.log(character); 
       if (character === "+") {
         // detect if X has 1 or 2 digits
-        console.log(child[j]); 
-        console.log(child[j + 2] === "-");
-        console.log(child[j + 3] === "-");
+        // console.log(child[j]); 
+        // console.log(child[j + 2] === "-");
+        // console.log(child[j + 3] === "-");
         const phoneLength = childArray[j + 2] === "-" ? 14 : 15;  
         // detect if phone is included in the current child phone
         const currentPhone = childArray.splice(j, phoneLength); 
-
-        console.log(currentPhone); 
+        // console.log(currentPhone); 
         const matchedNumber = currentPhone.join("").includes(phone); 
-        console.log(matchedNumber); 
+        // console.log(matchedNumber); 
 
         if (matchedNumber) {
           matchedNumbers++; 
-          if (matchedNumbers > 1) {
-            return null; 
-          }
-          console.log(agendaArray[i]);
-          console.log(childArray); 
-          
+          // console.log(agendaArray[i]);
+          // console.log(childArray);     
           matchedChildArray = childArray;
+        }
+        if (matchedNumbers > 1) {
+          return null; 
         }
       }
     }
@@ -56,8 +50,9 @@ function findInAgenda(agenda, phone) {
   let address = ""; 
 
   let iteratingName = false; 
-  console.log(matchedChildArray)
-  // after the iteration, get the data of the child with the retreived index and save it into childData;
+  // console.log(matchedChildArray);
+
+  // after the iteration, get the data of the child ;
   for (let i = 0; i < matchedChildArray.length; i++) {
     const character = matchedChildArray[i];
     if (character === "<") {
@@ -76,22 +71,17 @@ function findInAgenda(agenda, phone) {
       i--; 
     }
   }
-  console.log(matchedChildArray)
-  // if (matchedChildArray[matchedChildArray.length - 1] === " ") {
-  //   matchedChildArray.splice(matchedChildArray.length - 1, 1); 
-  // }; 
-  // if (matchedChildArray[0] === " ") {
-  //   matchedChildArray.splice(0, 1); 
-  // }; 
-  // address = matchedChildArray.join(""); 
+  // console.log(matchedChildArray)
+
   address = matchedChildArray.join("").trim(); 
-  console.log(address); 
-  console.log(name); 
+  // console.log(address); 
+  // console.log(name); 
+
   const childData = {
     name,
     address,
   }; 
-  console.log(childData); 
+  // console.log(childData); 
   return childData; 
 }
 
