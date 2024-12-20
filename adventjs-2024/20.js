@@ -24,10 +24,7 @@ function fixGiftList(received, expected) {
     // console.log(expected); 
     // console.log(expectedGiftQuantity);
 
-    if (expectedGiftQuantity === 0) {
-      result.extra[receivedGift] = receivedGiftQuantity; 
-    }
-    else if (receivedGiftQuantity > expectedGiftQuantity) {
+    if (receivedGiftQuantity > expectedGiftQuantity) {
       result.extra[receivedGift] = receivedGiftQuantity - expectedGiftQuantity; 
     }
     else if (receivedGiftQuantity < expectedGiftQuantity) {
@@ -35,7 +32,7 @@ function fixGiftList(received, expected) {
     }
   }
 
-  while (expected.length/*  && false */) {
+  while (expected.length) {
     const expectedGift = expected[0]; 
     const expectedGiftQuantity = expected.filter(element => element === expectedGift).length; 
     expected = expected.filter(element => element !== expectedGift); 
