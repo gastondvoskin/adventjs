@@ -11,38 +11,35 @@ function fixGiftList(received, expected) {
     missing: {},
     extra: {}
   }; 
-
+  
   while (received.length) {
     const receivedGift = received[0]; 
-    const receivedGiftQuantity = received.filter(element => element === receivedGift).length; 
+    const lengthBefore = received.length; 
     received = received.filter(element => element !== receivedGift); 
-    // console.log(received); 
-    // console.log(receivedGiftQuantity); 
+    const lengthAfter = received.length; 
+    const receivedQuantity = lengthBefore - lengthAfter; 
 
-    const expectedGiftQuantity = expected.filter(element => element === receivedGift).length; 
+    const expectedQuantity = expected.filter(element => element === receivedGift).length; 
     expected = expected.filter(element => element !== receivedGift); 
-    // console.log(expected); 
-    // console.log(expectedGiftQuantity);
 
-    if (receivedGiftQuantity > expectedGiftQuantity) {
-      result.extra[receivedGift] = receivedGiftQuantity - expectedGiftQuantity; 
+    if (receivedQuantity > expectedQuantity) {
+      result.extra[receivedGift] = receivedQuantity - expectedQuantity; 
     }
-    else if (receivedGiftQuantity < expectedGiftQuantity) {
-      result.missing[receivedGift] = expectedGiftQuantity - receivedGiftQuantity;   
+    else if (receivedQuantity < expectedQuantity) {
+      result.missing[receivedGift] = expectedQuantity - receivedQuantity;   
     }
   }
 
   while (expected.length) {
     const expectedGift = expected[0]; 
-    const expectedGiftQuantity = expected.filter(element => element === expectedGift).length; 
+    const lengthBefore = expected.length; 
     expected = expected.filter(element => element !== expectedGift); 
-    // console.log(expected); 
+    const lengthAfter = expected.length; 
+    const expectedQuantity = lengthBefore - lengthAfter; 
 
-    result.missing[expectedGift] = expectedGiftQuantity;   
-    // console.log(expectedGiftQuantity); 
+    result.missing[expectedGift] = expectedQuantity;   
   }
 
-  // console.log(result);
   return result;
 }
 
