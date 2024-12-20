@@ -7,24 +7,22 @@
 // }
 
 function fixGiftList(received, expected) {
-  console.log("hola")
   let result = {
     missing: {},
     extra: {}
   }; 
 
-
-  while (received.length/*  && false */) {
+  while (received.length) {
     const receivedGift = received[0]; 
     const receivedGiftQuantity = received.filter(element => element === receivedGift).length; 
     received = received.filter(element => element !== receivedGift); 
-    console.log(received); 
+    // console.log(received); 
     // console.log(receivedGiftQuantity); 
 
     const expectedGiftQuantity = expected.filter(element => element === receivedGift).length; 
     expected = expected.filter(element => element !== receivedGift); 
-    console.log(expected); 
-    console.log(expectedGiftQuantity);
+    // console.log(expected); 
+    // console.log(expectedGiftQuantity);
 
     if (expectedGiftQuantity === 0) {
       result.extra[receivedGift] = receivedGiftQuantity; 
@@ -41,14 +39,11 @@ function fixGiftList(received, expected) {
     const expectedGift = expected[0]; 
     const expectedGiftQuantity = expected.filter(element => element === expectedGift).length; 
     expected = expected.filter(element => element !== expectedGift); 
-    console.log(expected); 
+    // console.log(expected); 
 
     result.missing[expectedGift] = expectedGiftQuantity;   
     // console.log(expectedGiftQuantity); 
-
   }
-
-
 
   // console.log(result);
   return result;
