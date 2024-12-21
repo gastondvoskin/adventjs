@@ -14,58 +14,58 @@ function treeHeight(tree) {
 }
 
 
-// TEST 
-console.log(treeHeight({
-  value: ".", 
-  left: null, 
-  right: null, 
-}))
+// TESTS
+// console.log(treeHeight({
+//   value: ".", 
+//   left: null, 
+//   right: null, 
+// }))
 
-console.log(treeHeight({
-  value: ".", 
-  left: {
-    value: ".", 
-    left: null, 
-    right: null, 
-  }, 
-  right: null, 
-}))
+// console.log(treeHeight({
+//   value: ".", 
+//   left: {
+//     value: ".", 
+//     left: null, 
+//     right: null, 
+//   }, 
+//   right: null, 
+// }))
 
-console.log(treeHeight({
-  value: ".", 
-  left: {
-    value: ".", 
-    left: null, 
-    right: null, 
-  }, 
-  right: {
-    value: ".", 
-    left: null, 
-    right: null, 
-  },  
-}))
+// console.log(treeHeight({
+//   value: ".", 
+//   left: {
+//     value: ".", 
+//     left: null, 
+//     right: null, 
+//   }, 
+//   right: {
+//     value: ".", 
+//     left: null, 
+//     right: null, 
+//   },  
+// }))
 
-console.log(treeHeight({
-  value: ".", 
-  left: {
-    value: ".", 
-    left: null, 
-    right: null, 
-  }, 
-  right: {
-    value: ".", 
-    left: null, 
-    right: {
-      value: ".", 
-      left: null, 
-      right: {
-        value: ".", 
-        left: null, 
-        right: null, 
-      }, 
-    }, 
-  },  
-}))
+// console.log(treeHeight({
+//   value: ".", 
+//   left: {
+//     value: ".", 
+//     left: null, 
+//     right: null, 
+//   }, 
+//   right: {
+//     value: ".", 
+//     left: null, 
+//     right: {
+//       value: ".", 
+//       left: null, 
+//       right: {
+//         value: ".", 
+//         left: null, 
+//         right: null, 
+//       }, 
+//     }, 
+//   },  
+// }))
 
 
 
