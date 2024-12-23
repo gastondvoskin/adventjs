@@ -7,20 +7,17 @@ function findMissingNumbers(nums) {
   let missingNumbers = []; 
 
   const maxNumber = Math.max(...nums); 
-  console.log(maxNumber); 
   
   for (let i = 1; i <= maxNumber; i++) {
-    console.log(i); 
     if (!nums.includes(i)) {
-      console.log(i);
       missingNumbers.push(i); 
-    }
-  }
+    }; 
+  };
 
   return missingNumbers; 
 }
 
-console.log(findMissingNumbers([0, 2, 1, 5])); 
+console.log(findMissingNumbers([0, 2, 1, 1, 5])); 
 
 
 
@@ -42,4 +39,15 @@ findMissingNumbers([3, 2, 1, 1])
 
 findDisappearedNumbers([5, 5, 5, 3, 3, 2, 1])
 // [4] 
+*/
+
+/* 
+OLD
+nums.sort((a, b) => a - b); 
+
+let incrementalArray = []; 
+  for (let i = 1; i <= maxNumber; i++) {
+    incrementalArray.push(i); 
+  }
+  // console.log(incrementalArray);  
 */
