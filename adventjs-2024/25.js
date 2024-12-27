@@ -4,9 +4,70 @@
 // }
 
 function execute(code) {
-  // Code here
-  return 0
+  // const NEXT = ">";
+  const INC = "+";
+  const DEC = "-";
+  const START_LOOP = "[";
+  const END_LOOP = "]";
+  const START_CONDITION = "{";
+  const END_CONDITION = "}";
+
+  let loopIndex = null;
+  let value = 0; 
+  let codeArray = code.split(""); 
+
+  for (let i = 0; i < codeArray.length; i++) {
+    const instruction = codeArray[i];
+    console.log(i, value, instruction); 
+    
+    if (instruction === START_LOOP) {
+      console.log(i, value); 
+      if (value === 0) {
+        while (codeArray[i] !== END_LOOP) {
+          i++;
+          console.log(i); 
+        }
+      }
+      else {
+        console.log(i); 
+        loopIndex = i;
+        // console.log(loopIndex);   
+      }
+    }
+    else if (instruction === END_LOOP) {
+      console.log(i); 
+      i = loopIndex - 1; 
+    }
+    else if (instruction === INC) {
+      console.log(i); 
+      value++;
+    } 
+    else if (instruction === DEC) {
+      console.log(i); 
+      value--;
+    }
+
+    else if (instruction === START_CONDITION && value === 0) {
+      while (codeArray[i] !== END_CONDITION) {
+        i++;
+        console.log(i); 
+      }
+    }
+
+  }
+
+  return value;
 }
+
+// console.log(execute("+[-]++")); 
+console.log(execute("++")); 
+console.log(execute("--")); 
+console.log(execute("+-+")); 
+console.log(execute("+>>>>--")); 
+console.log(execute("++[-]-")); 
+console.log(execute("+{++}")); 
+console.log(execute("+-{++}")); 
+
 
 /* 
 EXERCISE
