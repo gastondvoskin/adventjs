@@ -18,43 +18,30 @@ function execute(code) {
 
   for (let i = 0; i < codeArray.length; i++) {
     const instruction = codeArray[i];
-    console.log(i, value, instruction); 
     
-    if (instruction === START_LOOP) {
-      console.log(i, value); 
-      if (value === 0) {
-        while (codeArray[i] !== END_LOOP) {
-          i++;
-          console.log(i); 
-        }
-      }
-      else {
-        console.log(i); 
-        loopIndex = i;
-        // console.log(loopIndex);   
-      }
+    if (instruction === START_LOOP && value === 0) {
+      while (codeArray[i] !== END_LOOP) {
+        i++;
+      };
+    }
+    else if (instruction === START_LOOP && value !== 0) {
+      loopIndex = i;
     }
     else if (instruction === END_LOOP) {
-      console.log(i); 
       i = loopIndex - 1; 
     }
-    else if (instruction === INC) {
-      console.log(i); 
-      value++;
-    } 
-    else if (instruction === DEC) {
-      console.log(i); 
-      value--;
-    }
-
     else if (instruction === START_CONDITION && value === 0) {
       while (codeArray[i] !== END_CONDITION) {
         i++;
-        console.log(i); 
-      }
+      };
     }
-
-  }
+    else if (instruction === INC) {
+      value++;
+    } 
+    else if (instruction === DEC) {
+      value--;
+    }
+  };
 
   return value;
 }
