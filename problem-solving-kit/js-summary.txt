@@ -1,4 +1,4 @@
-1. Function: declaration, parameters, return, error handling, try-catch, throw, arguments validation, scope. 
+1. Function: declaration, parameters, return, error handling, try-catch, throw, arguments validation, scope, promises, async-await, fetch. 
 2. Variables: let, const. 
 3. Loops: for, while, nested loops. 
 4. Flow control: if, else if, else, order of operations, break, return, continue. 
