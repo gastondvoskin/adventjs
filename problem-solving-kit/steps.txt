@@ -1,0 +1,5 @@
+Steps to solve a logical problem
+1. Understand the problem statement by testing the output is the one I am expecting. 
+2. Break the problem into smaller parts and write the pseudo code. 
+3. Write the minimum code unit, console log (node --watch file-name, ctrl+shift+p Quokka.js start on current file), adjust. 
+4. Once the tests have passed, refactor for better readability and performance.
