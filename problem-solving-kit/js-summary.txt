@@ -1,7 +1,7 @@
 1. Function: declaration, parameters, return, error handling, try-catch, throw, arguments validation, scope, promises, async-await, fetch. 
-2. Variables: let, const. 
-3. Loops: for, while, forEach, nested loops. 
-4. Flow control: if, else if, else, order of operations, break, return, continue. 
+2. Variables: let, const, operations. 
+3. Loops: for, while, forEach, nested loops, break, continue. 
+4. Flow control: if, else if, else, nested if, operators, return, early return, operations and order of operations.  
 5. Arrays: forEach, map, splice, filter, find, includes, push-unshift-pop-unshift, sort, destructuring, spread, assign a value to an element. 
 6. Objects: dot notation, bracket notation, destructuring, spread, object.keys, object.values, object.entries combined with for...of. 
 7. Strings: split, repeat, toLowerCase-toUpperCase, trim, template literals. 
