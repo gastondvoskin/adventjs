@@ -43,6 +43,12 @@ let splicedNames = [...names]
 // console.log({splicedNames})
 
 
+// modify only one element
+console.log(names); 
+names[1] = "robert"; 
+// equivalent to names.splice(1, 1, "robert")
+console.log(names); 
+
 // push-unshift-pop-shift
 // console.log("---push-unshift-pop-shift---");
 names.push("end"); 
@@ -111,14 +117,14 @@ sortedUsersByName.sort((a, b) => a.name.localeCompare(b.name));
 // expand an array into individual elements
 // use case: copy an array (without copying the reference)
 const copyOfNames = [...names]; 
-console.log(...names)
+// console.log(...names);
 // use case: merge arrays
 const arr1 = [1, 2];
 const arr2 = [3, 4];
 const mergedArr = [...arr1, ...arr2];
 // use case: pass elements as arguments
 const numbers2 = [10, 20, 30];
-console.log(Math.max(...numbers2)); // 30
+// console.log(Math.max(...numbers2)); // 30
 
 
 // ----------------------------------------------------
@@ -126,9 +132,13 @@ console.log(Math.max(...numbers2)); // 30
 // unpack values from an array into separate variables
 // use case: extract values
 const [name1, name2, name3] = names; 
-console.log(name1); 
+// console.log(name1); 
 // use case: swap variables without temp variable
 let nameA = "charles";
 let nameB = "paul";
 [nameA, nameB] = [nameB, nameA]; 
 
+
+// Other methods
+// some, every, reduce, flat, fill, reverse
+// Alternative structure: Set
