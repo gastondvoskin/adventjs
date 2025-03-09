@@ -1,4 +1,4 @@
-const names = ["charles", "peter"]; 
+let names = ["charles", "peter", "laura"]; 
 
 // forEach
 names.forEach((name, index) => {
@@ -25,3 +25,23 @@ console.log(capitalizedNames);
 // }
 
 // console.log(capitalizedNames2); 
+
+// ----------------------------------------------------
+
+// splice
+// params: start, deleteCount?, elements to add
+// used to remove, insert or replace elements. It modifies the original array.  
+// it returns the removed elements
+const removedNames = names.splice(1, 1, "richard", "mark"); 
+console.log({names}); 
+console.log({removedNames}); 
+
+let splicedNames = [...names]
+names.splice(1, 1, "richard", "mark"); 
+// ES2023
+// const splicedNames = names.toSpliced(1, 1, "richard", "mark"); 
+console.log({splicedNames})
+
+
+
+
