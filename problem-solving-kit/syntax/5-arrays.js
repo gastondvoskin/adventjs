@@ -106,7 +106,7 @@ sortedUsersByName.sort((a, b) => a.name.localeCompare(b.name));
 // console.log({sortedUsersByName}); 
 
 
-
+// ----------------------------------------------------
 // spread operator
 // expand an array into individual elements
 // use case: copy an array (without copying the reference)
@@ -119,4 +119,16 @@ const mergedArr = [...arr1, ...arr2];
 // use case: pass elements as arguments
 const numbers2 = [10, 20, 30];
 console.log(Math.max(...numbers2)); // 30
+
+
+// ----------------------------------------------------
+// destructuring
+// unpack values from an array into separate variables
+// use case: extract values
+const [name1, name2, name3] = names; 
+console.log(name1); 
+// use case: swap variables without temp variable
+let nameA = "charles";
+let nameB = "paul";
+[nameA, nameB] = [nameB, nameA]; 
 
