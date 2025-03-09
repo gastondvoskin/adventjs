@@ -37,11 +37,17 @@ console.log({names});
 console.log({removedNames}); 
 
 let splicedNames = [...names]
-names.splice(1, 1, "richard", "mark"); 
+// names.splice(1, 1, "richard", "mark"); 
 // ES2023
 // const splicedNames = names.toSpliced(1, 1, "richard", "mark"); 
 console.log({splicedNames})
 
 
+// push-unshift-pop-shift
+console.log("---push-unshift-pop-shift---");
+names.push("end"); 
+names.unshift("start");
+names.pop(); 
+names.shift(); 
 
 
