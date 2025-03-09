@@ -2,6 +2,6 @@
 2. Variables: let, const, operations. 
 3. Loops: for, while, forEach, nested loops, break, continue. 
 4. Flow control: if, else if, else, nested if, operators, return, early return, operations and order of operations.  
-5. Arrays: forEach, map; splice, push-unshift-pop-shift; filter, find, includes;  sort; destructuring, spread, assign a value to an element. 
+5. Arrays: forEach, map; splice, push-unshift-pop-shift; filter, find, includes; sort; spread operator; destructuring; assign a value to an element. 
 6. Objects: dot notation, bracket notation, destructuring, spread, object.keys, object.values, object.entries combined with for...of. 
 7. Strings: split, repeat, toLowerCase-toUpperCase, trim, template literals. 

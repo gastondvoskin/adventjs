@@ -74,7 +74,7 @@ const peterIsIncluded = names.includes("peter");
 // console.log("---sort---");
 
 // sorting numbers
-numbers = [1, 5, 3];
+const numbers = [1, 5, 3];
 let sortedNumbers = [...numbers]; 
 sortedNumbers.sort((a, b) => a - b); 
 // console.log({sortedNumbers}); 
@@ -104,3 +104,19 @@ sortedUsersByAge.sort((a, b) => a.age - b.age);
 // console.log({sortedUsersByAge}); 
 sortedUsersByName.sort((a, b) => a.name.localeCompare(b.name)); 
 // console.log({sortedUsersByName}); 
+
+
+
+// spread operator
+// expand an array into individual elements
+// use case: copy an array (without copying the reference)
+const copyOfNames = [...names]; 
+console.log(...names)
+// use case: merge arrays
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const mergedArr = [...arr1, ...arr2];
+// use case: pass elements as arguments
+const numbers2 = [10, 20, 30];
+console.log(Math.max(...numbers2)); // 30
+
