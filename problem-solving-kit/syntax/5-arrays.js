@@ -66,3 +66,41 @@ const firstNameWithFiveOrLessCharacters = names.find((element) => element.length
 // includes
 const peterIsIncluded = names.includes("peter"); 
 // console.log(peterIsIncluded)
+
+
+
+// ----------------------------------------------------
+// sort
+// console.log("---sort---");
+
+// sorting numbers
+numbers = [1, 5, 3];
+let sortedNumbers = [...numbers]; 
+sortedNumbers.sort((a, b) => a - b); 
+// console.log({sortedNumbers}); 
+// a - b sorts in ascending order
+
+// ES2023 toSorted
+// const sortedNumbers = numbers.toSorted((a, b) => a - b); 
+
+// sorting strings
+names = ["charles", "peter", "laura"]; 
+let sortedNames = [...names]; 
+sortedNames.sort((a, b) => a.localeCompare(b)); 
+// console.log(sortedNames);
+// console.log("a".localeCompare("a")); // 0 
+// console.log("a".localeCompare("b")); // -1
+// console.log("b".localeCompare("a")); // 1
+
+// sorting an array of objects
+const users = [
+  {name: "charles", age: 60}, 
+  {name: "peter", age: 50}, 
+  {name: "laura", age: 40}, 
+]
+let sortedUsersByAge = [...users]; 
+let sortedUsersByName = [...users]; 
+sortedUsersByAge.sort((a, b) => a.age - b.age); 
+// console.log({sortedUsersByAge}); 
+sortedUsersByName.sort((a, b) => a.name.localeCompare(b.name)); 
+// console.log({sortedUsersByName}); 
