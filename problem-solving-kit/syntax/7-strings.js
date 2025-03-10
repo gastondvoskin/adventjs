@@ -25,7 +25,7 @@ const originalPhrase = splitPhrase.join("");
 const chars = phrase.split(""); 
 chars.splice(8, 1, "one"); 
 const modifiedPhrase = chars.join(""); 
-console.log({modifiedPhrase});  
+// console.log({modifiedPhrase});  
 
 
 // template literals 
@@ -33,12 +33,57 @@ console.log({modifiedPhrase});
 let userName = "paul"; 
 const text = "is a user"; 
 const result = `${userName} ${text}!`; 
-console.log({result});
+// console.log({result});
 
 // concatenation 
 userName += " smith"; 
-console.log(userName); 
+// console.log(userName); 
 
 // multiline string 
 const multiLineText = "this is a\nmultiline string"; 
-console.log(multiLineText)
+// console.log(multiLineText); 
+
+
+
+// accessing a character
+// console.log(userName[0]); 
+// console.log(userName.charAt(0)); 
+
+
+
+// repeat 
+const highlightedUserName = "*".repeat(10) + userName + "*".repeat(10); 
+// console.log(highlightedUserName); 
+
+// trim
+const textWithSpaces = "       text      ";
+console.log(`a ${textWithSpaces} z`); 
+console.log(`trimStart: a ${textWithSpaces.trimStart()} z`); 
+console.log(`trimEnd: a ${textWithSpaces.trimEnd()} z`); 
+console.log(`trim: a ${textWithSpaces.trim()} z`); 
+
+
+// toLowerCase - toUpperCase 
+console.log(userName.toUpperCase()); 
+// console.log(userName)
+const capitalized = userName[0].toUpperCase() + userName.slice(1); 
+// console.log(capitalized); 
+
+
+
+// convert to number: Number, parseInt, parseFloat
+const PI = "3.14"; 
+const PINumber = Number(PI); 
+console.log({PINumber}, "typeof PINumber: ", typeof PINumber); 
+
+let width = "30px"; 
+let widthNumber = parseInt(width); 
+console.log({widthNumber}, "typeof widthNumber: ", typeof widthNumber); 
+
+width = "30.5px"; 
+widthNumber = parseFloat(width); 
+console.log({widthNumber}, "typeof widthNumber: ", typeof widthNumber); 
+
+// convert to string
+const originalPIString = widthNumber.toString(); 
+console.log({originalPIString}); 
