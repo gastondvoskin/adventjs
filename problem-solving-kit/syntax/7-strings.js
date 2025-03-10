@@ -30,7 +30,15 @@ console.log({modifiedPhrase});
 
 // template literals 
 // use case: string interpolation
-const name = "paul"; 
+let userName = "paul"; 
 const text = "is a user"; 
-const result = `${name} ${text}!`; 
+const result = `${userName} ${text}!`; 
 console.log({result});
+
+// concatenation 
+userName += " smith"; 
+console.log(userName); 
+
+// multiline string 
+const multiLineText = "this is a\nmultiline string"; 
+console.log(multiLineText)
