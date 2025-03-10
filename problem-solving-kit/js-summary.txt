@@ -8,6 +8,6 @@
 
 5. Arrays: forEach, map; splice, modify one element, push-unshift-pop-shift; filter, find, includes; sort; spread operator; destructuring; assign a value to an element. 
 
-6. Objects: dot notation, bracket notation; destructuring; spread; object.keys, object.values, object.entries combined with for...of. 
+6. Objects: dot notation, bracket notation; destructuring; spread; entries-keys-values combined with for...of. 
 
 7. Strings: split, repeat, toLowerCase-toUpperCase, trim, template literals. 

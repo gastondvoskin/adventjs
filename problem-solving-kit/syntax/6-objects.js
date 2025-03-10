@@ -37,6 +37,9 @@ const person = {
   name: "paul",
   age: 30,
 }
+const keyVals = Object.entries(person); 
+console.log(keyVals); // [ [ 'name', 'paul' ], [ 'age', 30 ] ]
+
 // short path with for...of: Recommended
 // Slightly faster than forEach (due to callback function overhead).
 // allows break
@@ -52,13 +55,28 @@ Object.entries(person).forEach((pair) => {
 
 
 // long path: less common
-const personKeyValues = Object.entries(person); 
-console.log(personKeyValues); // [ [ 'name', 'paul' ], [ 'age', 30 ] ]
-for (let i = 0; i < personKeyValues.length; i++) {
-  const [key, value] = personKeyValues[i];
+const keyValues = Object.entries(person); 
+for (let i = 0; i < keyValues.length; i++) {
+  const [key, value] = keyValues[i];
   console.log({i}, {key}, {value}); 
   // { i: 0 } { key: 'name' } { value: 'paul' }
   // { i: 1 } { key: 'age' } { value: 30 }
 }
 
 
+// keys
+console.log("-------------------keys-------------------");
+const keys = Object.keys(person); 
+console.log({keys}); 
+for (const key of Object.keys(user)) {
+  console.log({key}); 
+  console.log("value: ", person[key]); 
+}; 
+
+// values
+console.log("-------------------values-------------------");
+const values = Object.values(person); 
+console.log({values}); 
+for (const value of Object.values(user)) {
+  console.log({value}); 
+}; 
