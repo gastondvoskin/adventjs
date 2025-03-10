@@ -20,3 +20,7 @@ user[property] = 33;
 // destructuring
 const {name, age} = user; 
 console.log(age); 
+
+
+// spread
+const copyOfUser = {...user}; // creates a shallow copy
