@@ -80,3 +80,29 @@ console.log({values});
 for (const value of Object.values(user)) {
   console.log({value}); 
 }; 
+
+
+
+//-------------------------------------------------------
+console.log("-------------------other topics-------------------");
+
+const employee = {
+  name: "paul",
+  age: 30,
+  city: 0,
+}
+// hasOwnProperty
+console.log(employee.hasOwnProperty("city")); // true
+console.log(employee.city); // 0 -> falsy
+
+console.log(employee.hasOwnProperty(toString)); // false
+console.log(employee.toString); // Function -> truthy
+
+if (employee.hasOwnProperty("city")) {
+  console.log(employee.city); 
+} 
+
+
+// default values
+console.log(employee.city || "unknown"); // "unknown"
+console.log(employee.city ?? "unknown"); // 0
