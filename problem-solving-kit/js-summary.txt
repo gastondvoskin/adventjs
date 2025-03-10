@@ -10,4 +10,4 @@
 
 6. Objects: dot notation, bracket notation; destructuring; spread; entries-keys-values combined with for...of. 
 
-7. Strings: split, repeat, toLowerCase-toUpperCase, trim, template literals. 
+7. Strings: split-join; template literals - concatenation - multiline; accessing a character; repeat, trim, slice, toLowerCase-toUpperCase, converstion to number. 
